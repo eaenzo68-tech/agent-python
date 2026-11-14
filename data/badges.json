@@ -1,0 +1,170 @@
+[
+ {
+  "id": "premiere-mission",
+  "nom": "Première mission",
+  "symbole": "I",
+  "description": "Accomplir ta toute première mission.",
+  "condition": {
+   "type": "missions_accomplies",
+   "valeur": 1
+  }
+ },
+ {
+  "id": "maitre-conditions",
+  "nom": "Maître des conditions",
+  "symbole": "?:",
+  "description": "Accomplir 3 missions du thème Conditions.",
+  "condition": {
+   "type": "theme",
+   "theme": "conditions",
+   "valeur": 3
+  }
+ },
+ {
+  "id": "agent-boucles",
+  "nom": "Agent des boucles",
+  "symbole": "∞",
+  "description": "Accomplir 3 missions du thème Boucles.",
+  "condition": {
+   "type": "theme",
+   "theme": "boucles",
+   "valeur": 3
+  }
+ },
+ {
+  "id": "specialiste-fonctions",
+  "nom": "Spécialiste des fonctions",
+  "symbole": "ƒ",
+  "description": "Accomplir 3 missions du thème Fonctions.",
+  "condition": {
+   "type": "theme",
+   "theme": "fonctions",
+   "valeur": 3
+  }
+ },
+ {
+  "id": "maitre-listes",
+  "nom": "Archiviste des listes",
+  "symbole": "[ ]",
+  "description": "Accomplir 3 missions du thème Listes.",
+  "condition": {
+   "type": "theme",
+   "theme": "listes",
+   "valeur": 3
+  }
+ },
+ {
+  "id": "gardien-dictionnaires",
+  "nom": "Gardien des dictionnaires",
+  "symbole": "{ }",
+  "description": "Accomplir 3 missions du thème Dictionnaires.",
+  "condition": {
+   "type": "theme",
+   "theme": "dictionnaires",
+   "valeur": 3
+  }
+ },
+ {
+  "id": "decodeur",
+  "nom": "Décodeur",
+  "symbole": "Aa",
+  "description": "Accomplir 3 missions du thème Chaînes de caractères.",
+  "condition": {
+   "type": "theme",
+   "theme": "chaines",
+   "valeur": 3
+  }
+ },
+ {
+  "id": "demineur",
+  "nom": "Démineur",
+  "symbole": "!",
+  "description": "Accomplir 2 missions de gestion des erreurs.",
+  "condition": {
+   "type": "theme",
+   "theme": "exceptions",
+   "valeur": 2
+  }
+ },
+ {
+  "id": "chasseur-bugs",
+  "nom": "Chasseur de bugs",
+  "symbole": "⌖",
+  "description": "Corriger 2 programmes sabotés (missions de niveau 7).",
+  "condition": {
+   "type": "niveau",
+   "niveau": 7,
+   "valeur": 2
+  }
+ },
+ {
+  "id": "code-propre",
+  "nom": "Code propre",
+  "symbole": "✓",
+  "description": "Obtenir « Excellent » en qualité de code sur 3 missions.",
+  "condition": {
+   "type": "qualite_excellente",
+   "valeur": 3
+  }
+ },
+ {
+  "id": "sans-indice",
+  "nom": "Mission accomplie sans indice",
+  "symbole": "◎",
+  "description": "Réussir une mission sans aucun indice.",
+  "condition": {
+   "type": "sans_indice",
+   "valeur": 1
+  }
+ },
+ {
+  "id": "serie-5",
+  "nom": "Cinq missions consécutives",
+  "symbole": "5×",
+  "description": "Réussir 5 missions d'affilée (en 2 envois maximum, sans révéler la solution).",
+  "condition": {
+   "type": "serie",
+   "valeur": 5
+  }
+ },
+ {
+  "id": "perseverant",
+  "nom": "Persévérant",
+  "symbole": "↻",
+  "description": "Réussir une mission après au moins 3 envois échoués.",
+  "condition": {
+   "type": "perseverance",
+   "valeur": 3
+  }
+ },
+ {
+  "id": "createur",
+  "nom": "Stratège",
+  "symbole": "✦",
+  "description": "Accomplir 3 missions générées ou créées par toi.",
+  "condition": {
+   "type": "missions_hors_banque",
+   "valeur": 3
+  }
+ },
+ {
+  "id": "veteran",
+  "nom": "Vétéran",
+  "symbole": "XV",
+  "description": "Accomplir 15 missions.",
+  "condition": {
+   "type": "missions_accomplies",
+   "valeur": 15
+  }
+ },
+ {
+  "id": "legende",
+  "nom": "Légende de l'Agence",
+  "symbole": "★",
+  "description": "Accomplir 30 missions.",
+  "condition": {
+   "type": "missions_accomplies",
+   "valeur": 30
+  }
+ }
+]

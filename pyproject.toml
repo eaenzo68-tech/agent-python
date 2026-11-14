@@ -1,0 +1,19 @@
+# Configuration des outils de développement (facultatifs).
+# L'application elle-même n'a besoin d'AUCUNE installation : voir README.md.
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+
+[tool.ruff.lint]
+# E/W : style PEP 8, F : erreurs probables, B : pièges courants,
+# N : noms, UP : syntaxe moderne, A : noms qui cachent des fonctions intégrées
+select = ["E", "W", "F", "B", "N", "UP", "A"]
+# E501 : les textes pédagogiques en français sont parfois longs.
+# N818 : nos exceptions ont des noms français (FonctionDesactivee).
+# B905 : zip(strict=...) n'apporte rien ici.
+ignore = ["E501", "N818", "B905"]

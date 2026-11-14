@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Agent Python — Centre de formation</title>
+  <meta name="description" content="Apprendre Python en accomplissant des missions d'agent secret. Fonctionne hors ligne.">
+  <meta name="theme-color" content="#070b12">
+  <!-- Installation sur l'écran d'accueil de l'iPad -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Agent Python">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="assets/icone.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/icone-180.png">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <a class="lien-evitement" href="#vue">Aller au contenu</a>
+  <div class="application">
+    <nav class="navigation" id="nav" aria-label="Navigation principale"></nav>
+    <div class="principal">
+      <header class="barre-haut">
+        <div class="barre-agent" id="barre-agent"></div>
+        <div class="etat-moteur etat-chargement" id="etat-moteur" role="status">
+          <span class="voyant" aria-hidden="true"></span>
+          <span class="etat-moteur-texte">Chargement de Python…</span>
+        </div>
+      </header>
+      <main id="vue" class="vue" tabindex="-1">
+        <p class="chargement">Initialisation du centre de commandement…</p>
+      </main>
+    </div>
+  </div>
+  <div id="telephone" class="telephone"></div>
+  <div id="modales"></div>
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+  <noscript>
+    <p class="noscript">Cette application a besoin de JavaScript pour fonctionner.</p>
+  </noscript>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

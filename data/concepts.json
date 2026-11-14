@@ -1,0 +1,409 @@
+[
+ {
+  "id": "variables",
+  "nom": "Variables et affectation",
+  "categorie": "Bases",
+  "resume": "Une variable est une étiquette posée sur une valeur. Le signe = range la valeur de droite dans la variable de gauche. On peut ensuite réutiliser ou modifier cette valeur.",
+  "syntaxe": "nom_variable = valeur\nnom_variable = nom_variable + 1   # on peut écrire : nom_variable += 1\n",
+  "exemple": "agents_presents = 4\nagents_presents += 2          # 6\nnom_code = \"Lynx\"\nprint(nom_code, agents_presents)\n",
+  "pieges": [
+   "Utiliser une variable avant de l'avoir créée (NameError).",
+   "Confondre = (ranger) et == (comparer).",
+   "Oublier que Python distingue majuscules et minuscules : Total ≠ total."
+  ],
+  "conseil": "Choisis des noms qui disent ce que contient la variable, en snake_case : total_points, nom_agent.",
+  "mots_cles": [
+   "variable",
+   "variables",
+   "affectation",
+   "assignation",
+   "identifiant",
+   "constante"
+  ]
+ },
+ {
+  "id": "types",
+  "nom": "Types de données et conversions",
+  "categorie": "Bases",
+  "resume": "Chaque valeur a un type : int (entier), float (nombre à virgule), str (texte), bool (True/False). Le type décide des opérations possibles. On convertit avec int(), float(), str().",
+  "syntaxe": "type(valeur)        # affiche le type\nint(\"42\")           # texte → entier\nfloat(\"3.5\")        # texte → nombre à virgule\nstr(42)             # nombre → texte\n",
+  "exemple": "age_texte = input(\"Âge ? \")   # input() renvoie TOUJOURS un str\nage = int(age_texte)\nprint(f\"Dans un an : {age + 1}\")\n",
+  "pieges": [
+   "Additionner un texte et un nombre : \"5\" + 3 → TypeError.",
+   "Oublier que input() renvoie un texte.",
+   "int(\"3.5\") échoue : il faut float() pour un nombre à virgule."
+  ],
+  "conseil": "En cas de doute, affiche type(valeur) pour vérifier ce que tu manipules.",
+  "mots_cles": [
+   "type",
+   "types",
+   "int",
+   "float",
+   "str",
+   "bool",
+   "entier",
+   "flottant",
+   "booléen",
+   "conversion",
+   "convertir",
+   "transtypage"
+  ]
+ },
+ {
+  "id": "conditions",
+  "nom": "Conditions (if / elif / else)",
+  "categorie": "Structures de contrôle",
+  "resume": "Une condition permet d'exécuter un bloc seulement si une expression est vraie. elif teste un autre cas, else traite tout le reste. Python teste dans l'ordre et s'arrête au premier cas vrai.",
+  "syntaxe": "if condition:\n    instructions\nelif autre_condition:\n    instructions\nelse:\n    instructions\n",
+  "exemple": "niveau = 4\nif niveau >= 5:\n    print(\"Accès total\")\nelif niveau >= 3:\n    print(\"Accès limité\")\nelse:\n    print(\"Accès refusé\")\n",
+  "pieges": [
+   "Oublier les deux-points « : » à la fin de la ligne if.",
+   "Écrire = au lieu de == dans une condition.",
+   "Mal ordonner les cas : le premier cas vrai « gagne »."
+  ],
+  "conseil": "Opérateurs utiles : == != < <= > >=, et pour combiner : and, or, not.",
+  "mots_cles": [
+   "if",
+   "elif",
+   "else",
+   "condition",
+   "conditions",
+   "conditionnel",
+   "comparaison",
+   "and",
+   "or",
+   "not",
+   "structures de contrôle"
+  ]
+ },
+ {
+  "id": "boucle-for",
+  "nom": "Boucle for et range()",
+  "categorie": "Structures de contrôle",
+  "resume": "La boucle for répète un bloc pour chaque élément d'une collection (liste, texte, range…). range(n) produit les nombres de 0 à n - 1.",
+  "syntaxe": "for element in collection:\n    instructions\n\nrange(fin)               # 0, 1, …, fin - 1\nrange(debut, fin, pas)   # fin toujours EXCLUE\n",
+  "exemple": "total = 0\nfor montant in [120, 80, 45]:\n    total += montant\nprint(total)   # 245\n\nfor i in range(3, 0, -1):\n    print(i)   # 3, 2, 1\n",
+  "pieges": [
+   "Oublier que la borne de fin de range() est exclue.",
+   "Écrire for i in 5 au lieu de for i in range(5).",
+   "Placer un return DANS la boucle alors qu'il devrait être après."
+  ],
+  "conseil": "Parcours directement les éléments (for nom in noms) plutôt que les indices, sauf si tu as besoin de la position.",
+  "mots_cles": [
+   "for",
+   "boucle for",
+   "range",
+   "itération",
+   "itérer",
+   "parcourir",
+   "enumerate",
+   "boucle",
+   "boucles"
+  ]
+ },
+ {
+  "id": "boucle-while",
+  "nom": "Boucle while",
+  "categorie": "Structures de contrôle",
+  "resume": "La boucle while répète un bloc TANT QUE sa condition est vraie. Elle sert quand on ne connaît pas à l'avance le nombre de tours. Il faut qu'une instruction rapproche la condition de « fausse ».",
+  "syntaxe": "while condition:\n    instructions\n    # modifier une variable de la condition !\n",
+  "exemple": "carburant = 100\njours = 0\nwhile carburant >= 30:\n    carburant -= 30\n    jours += 1\nprint(jours)   # 3\n",
+  "pieges": [
+   "Oublier de modifier la variable testée : boucle infinie.",
+   "Utiliser while quand une boucle for suffit.",
+   "Mauvaise condition (< au lieu de <=) : un tour de trop ou de moins."
+  ],
+  "conseil": "Pour chaque while, demande-toi : « quelle ligne fera devenir la condition fausse ? »",
+  "mots_cles": [
+   "while",
+   "boucle while",
+   "tant que",
+   "break",
+   "continue",
+   "boucle infinie"
+  ]
+ },
+ {
+  "id": "listes",
+  "nom": "Listes",
+  "categorie": "Structures de données",
+  "resume": "Une liste est une collection ordonnée et modifiable. Chaque élément a une position (indice) qui commence à 0. On ajoute avec append(), on lit avec liste[i], on mesure avec len().",
+  "syntaxe": "ma_liste = [valeur1, valeur2]\nma_liste[0]            # premier élément\nma_liste[-1]           # dernier élément\nma_liste.append(x)     # ajoute à la fin\nma_liste[1:3]          # découpage (indices 1 et 2)\nx in ma_liste          # True si x est présent\n",
+  "exemple": "suspects = [\"Ivan\", \"Lea\"]\nsuspects.append(\"Marc\")\nprint(len(suspects), suspects[-1])   # 3 Marc\n",
+  "pieges": [
+   "liste[len(liste)] n'existe pas (IndexError) : le dernier indice est len(liste) - 1.",
+   "liste = liste.sort() remplace la liste par None : sort() renvoie None.",
+   "Modifier une liste reçue en paramètre modifie aussi l'originale."
+  ],
+  "conseil": "sorted(liste) crée une copie triée ; liste.sort() trie l'originale.",
+  "mots_cles": [
+   "liste",
+   "listes",
+   "list",
+   "append",
+   "indice",
+   "index",
+   "slicing",
+   "découpage",
+   "insert",
+   "remove",
+   "pop",
+   "sort",
+   "sorted",
+   "len"
+  ]
+ },
+ {
+  "id": "tuples",
+  "nom": "Tuples",
+  "categorie": "Structures de données",
+  "resume": "Un tuple ressemble à une liste mais il est IMMUABLE : on ne peut pas le modifier après sa création. Il sert à regrouper des valeurs qui vont ensemble (coordonnées, nom et âge…).",
+  "syntaxe": "point = (3, 4)\nx, y = point          # déballage\nun_seul = (5,)        # la virgule est obligatoire\n",
+  "exemple": "def min_max(valeurs):\n    return (min(valeurs), max(valeurs))\n\nplus_petit, plus_grand = min_max([4, 9, 1])\n",
+  "pieges": [
+   "Essayer de modifier un élément : point[0] = 5 → TypeError.",
+   "Oublier la virgule pour un tuple d'un seul élément.",
+   "Déballer avec le mauvais nombre de variables (ValueError)."
+  ],
+  "conseil": "Renvoie un tuple quand une fonction doit renvoyer plusieurs valeurs liées.",
+  "mots_cles": [
+   "tuple",
+   "tuples",
+   "immuable",
+   "déballage",
+   "unpacking"
+  ]
+ },
+ {
+  "id": "dictionnaires",
+  "nom": "Dictionnaires",
+  "categorie": "Structures de données",
+  "resume": "Un dictionnaire associe des CLÉS à des VALEURS (comme un annuaire). On accède à une valeur par sa clé, pas par une position. Les clés sont uniques.",
+  "syntaxe": "d = {\"cle\": valeur}\nd[\"cle\"]                  # lire (KeyError si absente)\nd.get(\"cle\", defaut)      # lire sans risque\nd[\"nouvelle\"] = valeur    # ajouter ou modifier\nfor cle, valeur in d.items():\n    ...\n",
+  "exemple": "compteur = {}\nfor ville in [\"Berne\", \"Oslo\", \"Berne\"]:\n    compteur[ville] = compteur.get(ville, 0) + 1\nprint(compteur)   # {'Berne': 2, 'Oslo': 1}\n",
+  "pieges": [
+   "Lire une clé absente avec d[cle] → KeyError.",
+   "Utiliser une liste comme clé (TypeError : unhashable).",
+   "Oublier que \"Lynx\" et \"lynx\" sont deux clés différentes."
+  ],
+  "conseil": "Teste la présence avec « if cle in d: » ou utilise d.get(cle, valeur_par_defaut).",
+  "mots_cles": [
+   "dictionnaire",
+   "dictionnaires",
+   "dict",
+   "clé",
+   "clés",
+   "items",
+   "keys",
+   "values",
+   "get",
+   "associatif"
+  ]
+ },
+ {
+  "id": "chaines",
+  "nom": "Chaînes de caractères",
+  "categorie": "Bases",
+  "resume": "Une chaîne (str) est un texte. Elle se parcourt et se découpe comme une liste, mais elle est immuable : les méthodes renvoient une NOUVELLE chaîne.",
+  "syntaxe": "texte.upper() / texte.lower()     # majuscules / minuscules\ntexte.strip()                     # retire les espaces autour\ntexte.split()                     # découpe en liste de mots\n\" \".join(liste)                   # assemble une liste de textes\ntexte.replace(\"a\", \"b\")\nf\"Bonjour {nom}\"                  # f-string\n",
+  "exemple": "brut = \"  agent LYNX  \"\npropre = brut.strip().capitalize()\nprint(f\"[{propre}]\")   # [Agent lynx]\n",
+  "pieges": [
+   "Oublier de récupérer le résultat : texte.upper() seul ne change pas texte.",
+   "Vouloir modifier un caractère : texte[0] = \"A\" → TypeError.",
+   "Mélanger guillemets ouvrants et fermants."
+  ],
+  "conseil": "Préfère les f-strings pour assembler texte et valeurs : f\"Score : {score}\".",
+  "mots_cles": [
+   "chaîne",
+   "chaînes",
+   "chaine",
+   "string",
+   "caractère",
+   "caractères",
+   "split",
+   "join",
+   "upper",
+   "lower",
+   "strip",
+   "f-string",
+   "replace",
+   "texte"
+  ]
+ },
+ {
+  "id": "fonctions",
+  "nom": "Fonctions",
+  "categorie": "Fonctions",
+  "resume": "Une fonction est un bloc de code nommé et réutilisable. Elle reçoit des paramètres, fait un travail et renvoie un résultat avec return. Elle permet de découper un problème en petites étapes.",
+  "syntaxe": "def nom_fonction(parametre1, parametre2=\"defaut\"):\n    \"\"\"Docstring : ce que fait la fonction.\"\"\"\n    ...\n    return resultat\n\nvaleur = nom_fonction(argument1)\n",
+  "exemple": "def aire_rectangle(largeur, hauteur):\n    \"\"\"Renvoie l'aire d'un rectangle.\"\"\"\n    return largeur * hauteur\n\nprint(aire_rectangle(3, 4))   # 12\n",
+  "pieges": [
+   "Oublier les parenthèses à l'appel : nom_fonction au lieu de nom_fonction().",
+   "Utiliser une variable locale en dehors de la fonction (NameError).",
+   "Donner trop ou pas assez d'arguments (TypeError)."
+  ],
+  "conseil": "Une fonction = une seule tâche. Si elle dépasse ~20 lignes, découpe-la.",
+  "mots_cles": [
+   "fonction",
+   "fonctions",
+   "def",
+   "paramètre",
+   "paramètres",
+   "argument",
+   "arguments",
+   "appel",
+   "docstring",
+   "portée",
+   "locale"
+  ]
+ },
+ {
+  "id": "print-return",
+  "nom": "print() ou return ?",
+  "categorie": "Fonctions",
+  "resume": "print() AFFICHE une valeur pour l'humain, puis l'oublie. return RENVOIE une valeur au programme, qui peut la stocker, la comparer ou l'afficher plus tard. Une fonction sans return renvoie None.",
+  "syntaxe": "def avec_print(x):\n    print(x * 2)      # affiche, renvoie None\n\ndef avec_return(x):\n    return x * 2      # renvoie la valeur\n",
+  "exemple": "a = avec_print(5)    # affiche 10, mais a vaut None\nb = avec_return(5)   # n'affiche rien, b vaut 10\nprint(b + 1)         # 11\n",
+  "pieges": [
+   "Écrire print() dans une fonction dont on veut réutiliser le résultat.",
+   "Placer return dans une boucle alors qu'il devrait être après.",
+   "Croire que la fonction « a marché » parce qu'on voit le résultat à l'écran."
+  ],
+  "conseil": "Règle d'agent : une fonction calcule et RENVOIE ; le programme principal décide d'afficher.",
+  "mots_cles": [
+   "return",
+   "valeur de retour",
+   "renvoyer",
+   "retourner",
+   "none",
+   "print"
+  ]
+ },
+ {
+  "id": "exceptions",
+  "nom": "Gestion des erreurs (try / except)",
+  "categorie": "Compléments",
+  "resume": "Une exception est un signal d'erreur (ValueError, KeyError…). Avec try / except, on prévoit un « plan B » au lieu de laisser le programme s'arrêter.",
+  "syntaxe": "try:\n    instruction_risquee\nexcept TypeDErreur:\n    plan_b\nelse:\n    # si aucune erreur\nfinally:\n    # toujours exécuté\n",
+  "exemple": "saisie = \"4A\"\ntry:\n    code = int(saisie)\nexcept ValueError:\n    code = None\nprint(code)   # None\n",
+  "pieges": [
+   "Utiliser « except: » sans préciser l'erreur : cela cache les vrais bugs.",
+   "Mettre trop de code dans le try.",
+   "Utiliser try/except pour éviter de réfléchir au cas normal."
+  ],
+  "conseil": "Attrape seulement l'erreur que tu sais gérer, au plus près de l'instruction risquée.",
+  "mots_cles": [
+   "exception",
+   "exceptions",
+   "try",
+   "except",
+   "erreur",
+   "erreurs",
+   "raise",
+   "finally",
+   "valueerror",
+   "typeerror",
+   "keyerror"
+  ]
+ },
+ {
+  "id": "fichiers",
+  "nom": "Fichiers",
+  "categorie": "Compléments",
+  "resume": "On lit et écrit des fichiers texte avec open(). Le bloc « with » ferme automatiquement le fichier, même en cas d'erreur.",
+  "syntaxe": "with open(\"fichier.txt\", \"r\", encoding=\"utf-8\") as f:\n    for ligne in f:\n        ...\n\nwith open(\"sortie.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"texte\\n\")\n",
+  "exemple": "with open(\"agents.txt\", \"w\", encoding=\"utf-8\") as f:\n    f.write(\"Lynx\\nOrion\\n\")\nwith open(\"agents.txt\", encoding=\"utf-8\") as f:\n    noms = [ligne.strip() for ligne in f]\n",
+  "pieges": [
+   "Oublier encoding=\"utf-8\" (accents mal lus sous Windows).",
+   "Le mode \"w\" efface le contenu existant.",
+   "Oublier strip() : chaque ligne lue se termine par \\n."
+  ],
+  "conseil": "Utilise toujours « with open(...) as f: ». Dans l'application, les fichiers sont virtuels.",
+  "mots_cles": [
+   "fichier",
+   "fichiers",
+   "open",
+   "with open",
+   "read",
+   "write",
+   "readline",
+   "csv",
+   "encoding"
+  ]
+ },
+ {
+  "id": "poo",
+  "nom": "Programmation orientée objet",
+  "categorie": "Avancé",
+  "resume": "Une classe est un plan de construction ; un objet est un exemplaire construit à partir de ce plan. Les attributs stockent les données de l'objet, les méthodes sont ses fonctions.",
+  "syntaxe": "class Agent:\n    def __init__(self, nom, niveau):\n        self.nom = nom\n        self.niveau = niveau\n\n    def promouvoir(self):\n        self.niveau += 1\n",
+  "exemple": "lynx = Agent(\"Lynx\", 2)\nlynx.promouvoir()\nprint(lynx.nom, lynx.niveau)   # Lynx 3\n",
+  "pieges": [
+   "Oublier self comme premier paramètre des méthodes.",
+   "Oublier self. devant un attribut : nom au lieu de self.nom.",
+   "Confondre la classe (Agent) et l'objet (lynx)."
+  ],
+  "conseil": "Noms de classes en PascalCase (Agent), noms d'objets et de méthodes en snake_case.",
+  "mots_cles": [
+   "classe",
+   "classes",
+   "class",
+   "objet",
+   "objets",
+   "méthode",
+   "méthodes",
+   "attribut",
+   "__init__",
+   "self",
+   "héritage",
+   "instance",
+   "orienté objet"
+  ]
+ },
+ {
+  "id": "numpy",
+  "nom": "NumPy",
+  "categorie": "Analyse de données",
+  "resume": "NumPy fournit des tableaux (array) de nombres très rapides et des opérations appliquées à tous les éléments d'un coup, sans boucle.",
+  "syntaxe": "import numpy as np\ntableau = np.array([1, 2, 3])\ntableau * 2          # array([2, 4, 6])\ntableau.mean()       # moyenne\ntableau[tableau > 1] # filtrage\n",
+  "exemple": "import numpy as np\ntemperatures = np.array([12.5, 15.0, 9.5])\nprint(temperatures.mean(), temperatures.max())\n",
+  "pieges": [
+   "Mélanger listes Python et arrays : [1, 2] * 2 ≠ np.array([1, 2]) * 2.",
+   "Oublier « import numpy as np ».",
+   "Les arrays ont un seul type : mélanger texte et nombres pose problème."
+  ],
+  "conseil": "Dans l'application, NumPy nécessite un téléchargement supplémentaire : à travailler dans ton IDE habituel.",
+  "mots_cles": [
+   "numpy",
+   "np.",
+   "array",
+   "ndarray",
+   "tableau numpy",
+   "vectorisation"
+  ]
+ },
+ {
+  "id": "pandas",
+  "nom": "pandas et analyse de données",
+  "categorie": "Analyse de données",
+  "resume": "pandas organise les données en tableaux (DataFrame) avec des colonnes nommées. On peut lire un CSV, filtrer des lignes, grouper et calculer des statistiques en quelques lignes.",
+  "syntaxe": "import pandas as pd\ndf = pd.read_csv(\"donnees.csv\")\ndf[\"colonne\"]               # une colonne (Series)\ndf[df[\"age\"] > 30]          # filtrer\ndf.groupby(\"ville\")[\"score\"].mean()\n",
+  "exemple": "import pandas as pd\ndf = pd.DataFrame({\"agent\": [\"Lynx\", \"Orion\"], \"missions\": [12, 7]})\nprint(df[\"missions\"].sum())\n",
+  "pieges": [
+   "Confondre df[\"col\"] (colonne) et df.loc[ligne] (ligne).",
+   "Oublier que la plupart des opérations renvoient un NOUVEAU DataFrame.",
+   "Filtrer avec and/or au lieu de & et |."
+  ],
+  "conseil": "Commence toujours par df.head() et df.info() pour découvrir les données.",
+  "mots_cles": [
+   "pandas",
+   "dataframe",
+   "pd.",
+   "series",
+   "read_csv",
+   "groupby",
+   "analyse de données",
+   "csv"
+  ]
+ }
+]

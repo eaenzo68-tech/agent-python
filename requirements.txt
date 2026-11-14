@@ -1,0 +1,5 @@
+# Aucune dépendance n'est nécessaire pour UTILISER l'application :
+# elle n'utilise que la bibliothèque standard de Python (serveur.py)
+# et Python dans le navigateur (Pyodide).
+#
+# Pour lancer les tests du projet : pip install -r requirements-dev.txt

@@ -1,0 +1,3442 @@
+[
+ {
+  "id": "VAR-01",
+  "ordre": 1,
+  "theme": "variables",
+  "concepts": [
+   "variables",
+   "chaines"
+  ],
+  "niveau": 1,
+  "difficulte": "facile",
+  "titre": "Opération Premier Contact",
+  "briefing": "Bienvenue à l'Agence, recrue. Avant toute chose, le terminal sécurisé doit enregistrer ton nom de code. Une seule ligne te sépare de ton premier rapport.",
+  "objectif": "Créer une variable contenant du texte et l'utiliser dans print().",
+  "enonce": "Remplace les « ... » pour que la variable nom_code contienne le texte \"Faucon\". Ne modifie pas la ligne print.",
+  "donnees": "Nom de code attribué : \"Faucon\"",
+  "resultat_attendu": "Agent Faucon au rapport",
+  "code_depart": "# Ton nom de code est \"Faucon\".\nnom_code = ...   # ← remplace ... par le texte \"Faucon\"\nprint(\"Agent\", nom_code, \"au rapport\")\n",
+  "tests": [
+   {
+    "type": "variable",
+    "nom": "nom_code",
+    "attendu": "Faucon",
+    "description": "valeur de nom_code",
+    "visible": true
+   },
+   {
+    "type": "sortie",
+    "attendu": "Agent Faucon au rapport\n",
+    "description": "affichage du rapport",
+    "entrees": [],
+    "visible": true
+   }
+  ],
+  "indices": [
+   "Un texte en Python s'écrit entre guillemets. Que faut-il mettre à droite du signe = ?",
+   "Le signe = range la valeur de droite dans la variable de gauche. Un texte (str) s'écrit \"comme ceci\".",
+   "Exemple similaire :\nville = \"Berne\"\nprint(\"Base de\", ville)"
+  ],
+  "solution": "# Ton nom de code est \"Faucon\".\nnom_code = \"Faucon\"\nprint(\"Agent\", nom_code, \"au rapport\")\n",
+  "explication": "Une variable est une étiquette posée sur une valeur. nom_code = \"Faucon\" crée l'étiquette nom_code et y range le texte \"Faucon\". Ensuite, print() remplace le nom de la variable par sa valeur, et sépare chaque élément par un espace.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "VAR-02",
+  "ordre": 2,
+  "theme": "variables",
+  "concepts": [
+   "types",
+   "variables"
+  ],
+  "niveau": 2,
+  "difficulte": "facile",
+  "titre": "Opération Fréquence Radio",
+  "revision_pour": [
+   "conversion_type"
+  ],
+  "briefing": "La radio a capté la fréquence de l'équipe Alpha. Problème : la radio transmet tout sous forme de TEXTE. Il faut calculer la fréquence de secours, 25 unités plus haut.",
+  "objectif": "Convertir un texte en nombre entier avec int() avant de calculer.",
+  "enonce": "1) Crée la variable frequence : la conversion en nombre entier de frequence_texte. 2) Crée frequence_secours = frequence + 25. 3) Affiche exactement : Fréquence de secours : 1475",
+  "donnees": "frequence_texte = \"1450\"",
+  "resultat_attendu": "Fréquence de secours : 1475",
+  "code_depart": "frequence_texte = \"1450\"   # reçu par radio : c'est du TEXTE (str)\n\n# 1. Convertis frequence_texte en nombre entier dans la variable frequence\n\n# 2. Calcule frequence_secours\n\n# 3. Affiche le résultat\n",
+  "tests": [
+   {
+    "type": "variable",
+    "nom": "frequence",
+    "attendu": 1450,
+    "description": "frequence est un nombre entier",
+    "visible": true
+   },
+   {
+    "type": "variable",
+    "nom": "frequence_secours",
+    "attendu": 1475,
+    "description": "frequence_secours",
+    "visible": true
+   },
+   {
+    "type": "sortie",
+    "attendu": "Fréquence de secours : 1475\n",
+    "description": "affichage",
+    "entrees": [],
+    "visible": true
+   }
+  ],
+  "indices": [
+   "Que donne \"1450\" + 25 en Python ? Le texte \"1450\" et le nombre 1450 sont-ils la même chose ?",
+   "int(texte) transforme un texte comme \"42\" en nombre 42. Ensuite, tu peux additionner.",
+   "Exemple :\nage_texte = \"17\"\nage = int(age_texte)\nage_l_an_prochain = age + 1\nprint(f\"Âge : {age_l_an_prochain}\")"
+  ],
+  "solution": "frequence_texte = \"1450\"   # reçu par radio : c'est du TEXTE (str)\n\nfrequence = int(frequence_texte)\nfrequence_secours = frequence + 25\nprint(f\"Fréquence de secours : {frequence_secours}\")\n",
+  "explication": "Chaque valeur a un type : str pour le texte, int pour les entiers, float pour les nombres à virgule. Python refuse d'additionner un str et un int : il faut convertir avec int(), float() ou str(). La f-string f\"... {variable}\" insère une valeur dans un texte, sans conversion manuelle.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "CON-01",
+  "ordre": 3,
+  "theme": "conditions",
+  "concepts": [
+   "conditions",
+   "types"
+  ],
+  "niveau": 2,
+  "difficulte": "facile",
+  "titre": "Opération Habilitation",
+  "briefing": "À l'entrée du QG, le terminal lit le niveau d'habilitation de chaque visiteur et affiche la décision.",
+  "objectif": "Écrire une suite de conditions if / elif / else.",
+  "enonce": "Le niveau est lu avec input(). Affiche « ACCÈS TOTAL » si le niveau est au moins 5, « ACCÈS LIMITÉ » s'il est au moins 3, sinon « ACCÈS REFUSÉ ».",
+  "donnees": "Entrée : 4",
+  "resultat_attendu": "ACCÈS LIMITÉ",
+  "code_depart": "niveau = int(input())   # le niveau lu par le terminal\n\n# Écris les conditions ici\n",
+  "tests": [
+   {
+    "type": "sortie",
+    "attendu": "ACCÈS LIMITÉ\n",
+    "description": "niveau 4",
+    "entrees": [
+     "4"
+    ],
+    "visible": true
+   },
+   {
+    "type": "sortie",
+    "attendu": "ACCÈS TOTAL\n",
+    "description": "niveau 5",
+    "entrees": [
+     "5"
+    ],
+    "visible": false
+   },
+   {
+    "type": "sortie",
+    "attendu": "ACCÈS TOTAL\n",
+    "description": "niveau 9",
+    "entrees": [
+     "9"
+    ],
+    "visible": false
+   },
+   {
+    "type": "sortie",
+    "attendu": "ACCÈS LIMITÉ\n",
+    "description": "niveau 3",
+    "entrees": [
+     "3"
+    ],
+    "visible": false
+   },
+   {
+    "type": "sortie",
+    "attendu": "ACCÈS REFUSÉ\n",
+    "description": "niveau 2",
+    "entrees": [
+     "2"
+    ],
+    "visible": false
+   },
+   {
+    "type": "sortie",
+    "attendu": "ACCÈS REFUSÉ\n",
+    "description": "niveau 0",
+    "entrees": [
+     "0"
+    ],
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Combien de cas différents y a-t-il ? Dans quel ordre faut-il les tester ?",
+   "« au moins 5 » s'écrit niveau >= 5. if teste le premier cas, elif les suivants, else le reste.",
+   "Exemple :\ntemperature = 25\nif temperature >= 30:\n    print(\"Chaud\")\nelif temperature >= 15:\n    print(\"Doux\")\nelse:\n    print(\"Froid\")"
+  ],
+  "solution": "niveau = int(input())   # le niveau lu par le terminal\n\nif niveau >= 5:\n    print(\"ACCÈS TOTAL\")\nelif niveau >= 3:\n    print(\"ACCÈS LIMITÉ\")\nelse:\n    print(\"ACCÈS REFUSÉ\")\n",
+  "explication": "Python teste les conditions de haut en bas et exécute seulement le PREMIER bloc dont la condition est vraie. C'est pourquoi on teste d'abord le cas le plus exigeant (>= 5). Pour tester ce programme dans l'application, écris une valeur dans la zone « Entrées ».",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "BOU-01",
+  "ordre": 4,
+  "theme": "boucles",
+  "concepts": [
+   "boucle-for"
+  ],
+  "niveau": 2,
+  "difficulte": "facile",
+  "titre": "Opération Compte à Rebours",
+  "briefing": "Le lanceur du drone attend le signal. Affiche le compte à rebours réglementaire.",
+  "objectif": "Répéter une instruction avec une boucle for et range().",
+  "enonce": "Affiche les nombres 5, 4, 3, 2, 1 (un par ligne) puis « Mise à feu ! ». Utilise une boucle plutôt que cinq print().",
+  "donnees": "Aucune donnée",
+  "resultat_attendu": "5\n4\n3\n2\n1\nMise à feu !",
+  "code_depart": "# Utilise une boucle for avec range()\n",
+  "tests": [
+   {
+    "type": "sortie",
+    "attendu": "5\n4\n3\n2\n1\nMise à feu !\n",
+    "description": "compte à rebours",
+    "entrees": [],
+    "visible": true
+   },
+   {
+    "type": "structure",
+    "doit_utiliser": [
+     "for"
+    ],
+    "interdit": [],
+    "description": "utilise une boucle",
+    "visible": true
+   }
+  ],
+  "indices": [
+   "range(début, fin, pas) peut-il compter à l'envers ?",
+   "range(5, 0, -1) donne 5, 4, 3, 2, 1 : la fin (0) est EXCLUE. Le dernier print se place APRÈS la boucle.",
+   "Exemple (de 3 à 1) :\nfor i in range(3, 0, -1):\n    print(i)\nprint(\"Fin\")   # pas indenté : hors de la boucle"
+  ],
+  "solution": "for seconde in range(5, 0, -1):\n    print(seconde)\nprint(\"Mise à feu !\")\n",
+  "explication": "range(5, 0, -1) part de 5, descend de 1 à chaque tour et s'arrête AVANT 0. L'indentation décide de ce qui est répété : le print final n'est pas indenté, il s'exécute une seule fois après la boucle.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "STR-01",
+  "ordre": 5,
+  "theme": "chaines",
+  "concepts": [
+   "chaines",
+   "variables"
+  ],
+  "niveau": 2,
+  "difficulte": "facile",
+  "titre": "Opération Miroir",
+  "briefing": "Le message a été écrit à l'envers pour tromper les curieux. Retourne-le pour le lire.",
+  "objectif": "Utiliser le découpage (slicing) d'une chaîne.",
+  "enonce": "Crée la variable message_decode contenant message à l'envers, puis affiche-la.",
+  "donnees": "message = \"tiunim a erag al\"",
+  "resultat_attendu": "la gare a minuit",
+  "code_depart": "message = \"tiunim a erag al\"\n\n# Crée message_decode, puis affiche-la\n",
+  "tests": [
+   {
+    "type": "variable",
+    "nom": "message_decode",
+    "attendu": "la gare a minuit",
+    "description": "message décodé",
+    "visible": true
+   },
+   {
+    "type": "sortie",
+    "attendu": "la gare a minuit\n",
+    "description": "affichage",
+    "entrees": [],
+    "visible": true
+   }
+  ],
+  "indices": [
+   "Une chaîne se découpe comme une liste avec [début:fin:pas]. Que donnerait un pas négatif ?",
+   "texte[::-1] parcourt le texte de la fin vers le début.",
+   "Exemple :\nmot = \"radar\"\nprint(mot[::-1])\nprint(\"Python\"[::-1])   # nohtyP"
+  ],
+  "solution": "message = \"tiunim a erag al\"\n\nmessage_decode = message[::-1]\nprint(message_decode)\n",
+  "explication": "Le découpage [début:fin:pas] fonctionne sur les chaînes, les listes et les tuples. Sans début ni fin, et avec un pas de -1, on obtient une copie inversée. Les chaînes étant immuables, message n'est pas modifié : on crée une nouvelle chaîne.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "DIC-01",
+  "ordre": 6,
+  "theme": "dictionnaires",
+  "concepts": [
+   "dictionnaires",
+   "variables"
+  ],
+  "niveau": 2,
+  "difficulte": "facile",
+  "titre": "Opération Annuaire des Bases",
+  "briefing": "Le registre des bases associe chaque agent à sa ville. Deux mises à jour viennent d'arriver du QG.",
+  "objectif": "Ajouter, modifier et lire une entrée d'un dictionnaire.",
+  "enonce": "1) Ajoute l'agent \"Orion\" basé à \"Neuchâtel\". 2) \"Lynx\" a déménagé : sa base devient \"Zurich\". 3) Affiche la base d'Orion en lisant le dictionnaire.",
+  "donnees": "bases = {\"Faucon\": \"Genève\", \"Lynx\": \"Berne\"}",
+  "resultat_attendu": "Neuchâtel",
+  "code_depart": "bases = {\"Faucon\": \"Genève\", \"Lynx\": \"Berne\"}\n\n# 1. Ajoute Orion\n\n# 2. Modifie la base de Lynx\n\n# 3. Affiche la base d'Orion\n",
+  "tests": [
+   {
+    "type": "variable",
+    "nom": "bases",
+    "attendu": {
+     "Faucon": "Genève",
+     "Lynx": "Zurich",
+     "Orion": "Neuchâtel"
+    },
+    "description": "contenu du registre",
+    "visible": true
+   },
+   {
+    "type": "sortie",
+    "attendu": "Neuchâtel\n",
+    "description": "affichage",
+    "entrees": [],
+    "visible": true
+   }
+  ],
+  "indices": [
+   "Comment accède-t-on à la valeur associée à une clé dans un dictionnaire ?",
+   "dico[cle] = valeur ajoute une clé (ou modifie sa valeur si elle existe déjà). dico[cle] seul lit la valeur.",
+   "Exemple :\nscores = {\"Iris\": 10}\nscores[\"Nova\"] = 7     # ajout\nscores[\"Iris\"] = 12    # modification\nprint(scores[\"Nova\"])"
+  ],
+  "solution": "bases = {\"Faucon\": \"Genève\", \"Lynx\": \"Berne\"}\n\nbases[\"Orion\"] = \"Neuchâtel\"\nbases[\"Lynx\"] = \"Zurich\"\nprint(bases[\"Orion\"])\n",
+  "explication": "Un dictionnaire associe des clés à des valeurs. La même écriture dico[cle] = valeur sert à ajouter ou à modifier : si la clé existe déjà, l'ancienne valeur est remplacée.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "VAR-03",
+  "ordre": 7,
+  "theme": "variables",
+  "concepts": [
+   "variables",
+   "fonctions",
+   "tuples"
+  ],
+  "niveau": 3,
+  "difficulte": "facile",
+  "titre": "Opération Horloge",
+  "briefing": "Les rapports indiquent les durées de surveillance en minutes. Le commandement veut des heures et des minutes : 135 minutes, c'est 2 h 15.",
+  "objectif": "Utiliser la division entière // et le reste %.",
+  "enonce": "Complète convertir_minutes(total_minutes) pour qu'elle renvoie le tuple (heures, minutes). Utilise // (division entière) et % (reste).",
+  "donnees": "convertir_minutes(135)",
+  "resultat_attendu": "(2, 15)",
+  "code_depart": "def convertir_minutes(total_minutes):\n    \"\"\"Convertit une durée en minutes en (heures, minutes).\"\"\"\n    heures = ...     # combien de fois 60 dans total_minutes ?\n    minutes = ...    # combien reste-t-il ?\n    return (heures, minutes)\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "convertir_minutes",
+    "args": [
+     135
+    ],
+    "attendu": {
+     "__tuple__": [
+      2,
+      15
+     ]
+    },
+    "description": "135 minutes",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "convertir_minutes",
+    "args": [
+     60
+    ],
+    "attendu": {
+     "__tuple__": [
+      1,
+      0
+     ]
+    },
+    "description": "pile une heure",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "convertir_minutes",
+    "args": [
+     59
+    ],
+    "attendu": {
+     "__tuple__": [
+      0,
+      59
+     ]
+    },
+    "description": "moins d'une heure",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "convertir_minutes",
+    "args": [
+     0
+    ],
+    "attendu": {
+     "__tuple__": [
+      0,
+      0
+     ]
+    },
+    "description": "zéro",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "convertir_minutes",
+    "args": [
+     601
+    ],
+    "attendu": {
+     "__tuple__": [
+      10,
+      1
+     ]
+    },
+    "description": "longue mission",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Dans 135 minutes, combien de « paquets » de 60 minutes entiers y a-t-il ? Et combien de minutes restent ?",
+   "a // b donne le quotient entier (135 // 60 = 2). a % b donne le reste (135 % 60 = 15).",
+   "Exemple : convertir des secondes en minutes :\nminutes = 150 // 60   # 2\nsecondes = 150 % 60   # 30"
+  ],
+  "solution": "def convertir_minutes(total_minutes):\n    \"\"\"Convertit une durée en minutes en (heures, minutes).\"\"\"\n    heures = total_minutes // 60\n    minutes = total_minutes % 60\n    return (heures, minutes)\n",
+  "explication": "// et % forment un duo : 135 = 60 × 2 + 15. On les utilise dès qu'il faut découper une quantité (heures/minutes, mètres/centimètres, pages/lignes…). Le tuple (heures, minutes) permet de renvoyer deux valeurs à la fois.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "CON-02",
+  "ordre": 8,
+  "theme": "conditions",
+  "concepts": [
+   "conditions",
+   "fonctions"
+  ],
+  "niveau": 3,
+  "difficulte": "facile",
+  "titre": "Opération Contrôle d'Accès",
+  "revision_pour": [
+   "egalite_affectation"
+  ],
+  "briefing": "Le sas du laboratoire s'ouvre seulement si le badge est « ALPHA » ET si le code vaut 7351. Un stagiaire a commencé la fonction… et Python refuse de la lancer.",
+  "objectif": "Différencier = (ranger) et == (comparer), et combiner deux conditions avec and.",
+  "enonce": "Complète verifier_acces(badge, code) : elle renvoie True si badge vaut \"ALPHA\" et code vaut 7351, sinon False. Attention : Python distingue majuscules et minuscules.",
+  "donnees": "verifier_acces(\"ALPHA\", 7351)",
+  "resultat_attendu": "True",
+  "code_depart": "def verifier_acces(badge, code):\n    \"\"\"Renvoie True si le badge est \"ALPHA\" ET le code vaut 7351.\"\"\"\n    if badge = \"ALPHA\":   # ← Python refuse cette ligne. Pourquoi ?\n        ...\n    return False\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "verifier_acces",
+    "args": [
+     "ALPHA",
+     7351
+    ],
+    "attendu": true,
+    "description": "bon badge, bon code",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "verifier_acces",
+    "args": [
+     "ALPHA",
+     1234
+    ],
+    "attendu": false,
+    "description": "mauvais code",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "verifier_acces",
+    "args": [
+     "BETA",
+     7351
+    ],
+    "attendu": false,
+    "description": "mauvais badge",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "verifier_acces",
+    "args": [
+     "alpha",
+     7351
+    ],
+    "attendu": false,
+    "description": "badge en minuscules",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Dans une condition, veux-tu RANGER une valeur ou COMPARER deux valeurs ?",
+   "== compare deux valeurs. and combine deux conditions : les deux doivent être vraies.",
+   "Exemple :\nif ville == \"Berne\" and jour == 3:\n    return True\nreturn False"
+  ],
+  "solution": "def verifier_acces(badge, code):\n    \"\"\"Renvoie True si le badge est \"ALPHA\" ET le code vaut 7351.\"\"\"\n    if badge == \"ALPHA\" and code == 7351:\n        return True\n    return False\n",
+  "explication": "= range une valeur dans une variable ; == pose une question (« est-ce égal ? ») et donne True ou False. Avec and, les deux conditions doivent être vraies. On peut même écrire directement : return badge == \"ALPHA\" and code == 7351.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "BOU-02",
+  "ordre": 9,
+  "theme": "boucles",
+  "concepts": [
+   "boucle-for",
+   "listes"
+  ],
+  "niveau": 3,
+  "difficulte": "facile",
+  "titre": "Opération Inventaire",
+  "briefing": "L'armurerie a reçu plusieurs caisses. Le registre doit indiquer le nombre total d'objets, calculé caisse par caisse.",
+  "objectif": "Utiliser un accumulateur dans une boucle for.",
+  "enonce": "Complète somme_codes(codes) pour qu'elle renvoie la somme des nombres de la liste. Utilise une boucle (sum() est interdit pour cette mission).",
+  "donnees": "somme_codes([3, 8, 12])",
+  "resultat_attendu": "23",
+  "code_depart": "def somme_codes(codes):\n    \"\"\"Renvoie la somme des nombres de la liste.\"\"\"\n    total = 0\n    for code in codes:\n        ...   # ajoute code au total\n    return total\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "somme_codes",
+    "args": [
+     [
+      3,
+      8,
+      12
+     ]
+    ],
+    "attendu": 23,
+    "description": "exemple",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "somme_codes",
+    "args": [
+     []
+    ],
+    "attendu": 0,
+    "description": "liste vide",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "somme_codes",
+    "args": [
+     [
+      -5,
+      5
+     ]
+    ],
+    "attendu": 0,
+    "description": "positifs et négatifs",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "somme_codes",
+    "args": [
+     [
+      100
+     ]
+    ],
+    "attendu": 100,
+    "description": "une seule caisse",
+    "visible": false
+   },
+   {
+    "type": "structure",
+    "doit_utiliser": [],
+    "interdit": [
+     "sum"
+    ],
+    "description": "sans sum()",
+    "visible": true
+   }
+  ],
+  "indices": [
+   "À chaque tour de boucle, que doit devenir total ?",
+   "total = total + code (ou total += code) ajoute la valeur courante au total.",
+   "Exemple (compter des éléments) :\nnombre = 0\nfor x in liste:\n    nombre += 1"
+  ],
+  "solution": "def somme_codes(codes):\n    \"\"\"Renvoie la somme des nombres de la liste.\"\"\"\n    total = 0\n    for code in codes:\n        total += code\n    return total\n",
+  "explication": "C'est le schéma de l'accumulateur : une variable initialisée AVANT la boucle, mise à jour PENDANT, utilisée APRÈS. Il sert à sommer, compter, concaténer…",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "LIS-01",
+  "ordre": 10,
+  "theme": "listes",
+  "concepts": [
+   "listes",
+   "conditions"
+  ],
+  "niveau": 3,
+  "difficulte": "facile",
+  "titre": "Opération Dernier Contact",
+  "revision_pour": [
+   "index"
+  ],
+  "briefing": "Le journal des contacts est une liste. Le chef veut toujours le DERNIER contact enregistré… mais le journal est parfois vide.",
+  "objectif": "Comprendre les indices d'une liste (le premier est 0, le dernier est len - 1 ou -1).",
+  "enonce": "Corrige et complète dernier_element(liste) : elle renvoie le dernier élément de la liste, ou None si la liste est vide.",
+  "donnees": "dernier_element([\"Lynx\", \"Orion\", \"Vega\"])",
+  "resultat_attendu": "\"Vega\"",
+  "code_depart": "def dernier_element(liste):\n    \"\"\"Renvoie le dernier élément, ou None si la liste est vide.\"\"\"\n    return liste[len(liste)]\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "dernier_element",
+    "args": [
+     [
+      "Lynx",
+      "Orion",
+      "Vega"
+     ]
+    ],
+    "attendu": "Vega",
+    "description": "trois contacts",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "dernier_element",
+    "args": [
+     [
+      "Sphinx"
+     ]
+    ],
+    "attendu": "Sphinx",
+    "description": "un seul contact",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "dernier_element",
+    "args": [
+     []
+    ],
+    "attendu": null,
+    "description": "journal vide",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "dernier_element",
+    "args": [
+     [
+      4,
+      8,
+      15,
+      16
+     ]
+    ],
+    "attendu": 16,
+    "description": "nombres",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Une liste de 3 éléments : quels sont ses indices valides ?",
+   "Les indices vont de 0 à len(liste) - 1. liste[-1] donne aussi le dernier élément. Une liste vide n'a AUCUN élément : il faut la traiter à part.",
+   "Exemple :\nif len(villes) == 0:\n    return None\nreturn villes[-1]"
+  ],
+  "solution": "def dernier_element(liste):\n    \"\"\"Renvoie le dernier élément, ou None si la liste est vide.\"\"\"\n    if not liste:\n        return None\n    return liste[-1]\n",
+  "explication": "Dans une liste de longueur n, les indices vont de 0 à n - 1 : liste[len(liste)] est toujours hors limites (IndexError). L'indice -1 désigne le dernier élément. « if not liste » est vrai quand la liste est vide.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "FON-01",
+  "ordre": 11,
+  "theme": "fonctions",
+  "concepts": [
+   "print-return",
+   "fonctions"
+  ],
+  "niveau": 3,
+  "difficulte": "facile",
+  "titre": "Opération Print ou Return ?",
+  "revision_pour": [
+   "print_return",
+   "retour_none"
+  ],
+  "briefing": "Le système automatique de l'agence appelle ta fonction et utilise le résultat pour ouvrir un sas. Il ne « voit » pas l'écran : une valeur seulement affichée est perdue pour lui.",
+  "objectif": "Comprendre la différence entre print() (afficher) et return (renvoyer).",
+  "enonce": "Corrige double_code(code) pour qu'elle RENVOIE le double du code au lieu de l'afficher. La fonction ne doit rien afficher.",
+  "donnees": "double_code(21)",
+  "resultat_attendu": "42",
+  "code_depart": "def double_code(code):\n    print(code * 2)   # ← le système ne peut pas récupérer cette valeur\n\n\nresultat = double_code(21)\nprint(\"Le système a reçu :\", resultat)\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "double_code",
+    "args": [
+     21
+    ],
+    "attendu": 42,
+    "description": "code 21",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "double_code",
+    "args": [
+     0
+    ],
+    "attendu": 0,
+    "description": "code 0",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "double_code",
+    "args": [
+     -7
+    ],
+    "attendu": -14,
+    "description": "code négatif",
+    "visible": false
+   },
+   {
+    "type": "structure",
+    "doit_utiliser": [
+     "return"
+    ],
+    "interdit": [],
+    "description": "utilise return",
+    "visible": true
+   }
+  ],
+  "indices": [
+   "Exécute le code de départ : que reçoit le système dans la variable resultat ?",
+   "print() montre une valeur à l'écran puis l'oublie. return la renvoie à celui qui a appelé la fonction. Une fonction sans return renvoie None.",
+   "Exemple :\ndef carre(n):\n    return n * n\n\nx = carre(5)   # x vaut 25\nprint(x)       # on affiche APRÈS, si on veut"
+  ],
+  "solution": "def double_code(code):\n    \"\"\"Renvoie le double du code.\"\"\"\n    return code * 2\n\n\nresultat = double_code(21)\nprint(\"Le système a reçu :\", resultat)\n",
+  "explication": "C'est LA confusion la plus fréquente chez les débutants. print() est destiné à l'humain qui regarde l'écran ; return est destiné au programme. Une bonne fonction calcule et renvoie ; c'est le code qui l'appelle qui décide d'afficher, de stocker ou de comparer.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "DIC-02",
+  "ordre": 12,
+  "theme": "dictionnaires",
+  "concepts": [
+   "dictionnaires",
+   "conditions"
+  ],
+  "niveau": 3,
+  "difficulte": "facile",
+  "titre": "Opération Base Introuvable",
+  "revision_pour": [
+   "cle"
+  ],
+  "briefing": "Le système de localisation plante dès qu'on cherche un agent absent du registre. Inacceptable en pleine opération.",
+  "objectif": "Lire un dictionnaire sans provoquer de KeyError.",
+  "enonce": "Corrige ville_agent(annuaire, nom) : elle renvoie la ville de l'agent, ou \"INCONNU\" si l'agent n'est pas dans l'annuaire.",
+  "donnees": "annuaire = {\"Faucon\": \"Genève\", \"Lynx\": \"Berne\"}",
+  "resultat_attendu": "ville_agent(annuaire, \"Cobra\") → \"INCONNU\"",
+  "code_depart": "def ville_agent(annuaire, nom):\n    \"\"\"Renvoie la ville de l'agent, ou \"INCONNU\".\"\"\"\n    return annuaire[nom]\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "ville_agent",
+    "args": [
+     {
+      "Faucon": "Genève",
+      "Lynx": "Berne"
+     },
+     "Lynx"
+    ],
+    "attendu": "Berne",
+    "description": "agent connu",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "ville_agent",
+    "args": [
+     {
+      "Faucon": "Genève",
+      "Lynx": "Berne"
+     },
+     "Cobra"
+    ],
+    "attendu": "INCONNU",
+    "description": "agent absent",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "ville_agent",
+    "args": [
+     {},
+     "Lynx"
+    ],
+    "attendu": "INCONNU",
+    "description": "annuaire vide",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "ville_agent",
+    "args": [
+     {
+      "Faucon": "Genève"
+     },
+     "faucon"
+    ],
+    "attendu": "INCONNU",
+    "description": "minuscule",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Que fait Python quand on demande une clé qui n'existe pas ?",
+   "« if nom in annuaire: » vérifie la présence d'une clé. La méthode get() le fait en une ligne.",
+   "Exemple :\nstock = {\"pommes\": 3}\nprint(stock.get(\"poires\", 0))   # 0, sans erreur"
+  ],
+  "solution": "def ville_agent(annuaire, nom):\n    \"\"\"Renvoie la ville de l'agent, ou \"INCONNU\".\"\"\"\n    if nom in annuaire:\n        return annuaire[nom]\n    return \"INCONNU\"\n",
+  "explication": "annuaire[nom] lève KeyError si la clé manque. Deux solutions propres : tester avec « in » avant de lire, ou utiliser annuaire.get(nom, \"INCONNU\") qui renvoie la valeur par défaut.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "STR-02",
+  "ordre": 13,
+  "theme": "chaines",
+  "concepts": [
+   "chaines",
+   "boucle-for",
+   "listes"
+  ],
+  "niveau": 3,
+  "difficulte": "facile",
+  "titre": "Opération Initiales",
+  "briefing": "Dans les rapports, les vrais noms sont remplacés par des initiales. Automatise la transformation.",
+  "objectif": "Découper une chaîne avec split() et construire un nouveau texte.",
+  "enonce": "Complète initiales(nom_complet) : elle renvoie la première lettre de chaque mot, en majuscule, suivie d'un point. \"James Bond\" → \"J.B.\"",
+  "donnees": "initiales(\"James Bond\")",
+  "resultat_attendu": "\"J.B.\"",
+  "code_depart": "def initiales(nom_complet):\n    \"\"\"Renvoie les initiales : \"James Bond\" → \"J.B.\" \"\"\"\n    resultat = \"\"\n    for mot in nom_complet.split():\n        ...   # ajoute la première lettre en majuscule et un point\n    return resultat\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "initiales",
+    "args": [
+     "James Bond"
+    ],
+    "attendu": "J.B.",
+    "description": "exemple",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "initiales",
+    "args": [
+     "ada lovelace"
+    ],
+    "attendu": "A.L.",
+    "description": "minuscules",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "initiales",
+    "args": [
+     "Grace Brewster Hopper"
+    ],
+    "attendu": "G.B.H.",
+    "description": "trois mots",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "initiales",
+    "args": [
+     "Mata"
+    ],
+    "attendu": "M.",
+    "description": "un seul mot",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Comment obtenir la première lettre d'un mot ? Et la mettre en majuscule ?",
+   "mot[0] est la première lettre ; mot[0].upper() la met en majuscule. On ajoute à resultat avec +=.",
+   "Exemple :\nresultat = \"\"\nfor mot in [\"chat\", \"rat\"]:\n    resultat += mot[-1]   # dernières lettres\n# resultat vaut \"tt\""
+  ],
+  "solution": "def initiales(nom_complet):\n    \"\"\"Renvoie les initiales : \"James Bond\" → \"J.B.\" \"\"\"\n    resultat = \"\"\n    for mot in nom_complet.split():\n        resultat += mot[0].upper() + \".\"\n    return resultat\n",
+  "explication": "split() découpe un texte en liste de mots. On construit ensuite une nouvelle chaîne morceau par morceau avec +=. mot[0] fonctionne car chaque mot contient au moins une lettre (split() ne produit pas de mots vides).",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "COR-04",
+  "ordre": 14,
+  "theme": "conditions",
+  "concepts": [
+   "conditions",
+   "fonctions"
+  ],
+  "niveau": 7,
+  "difficulte": "facile",
+  "titre": "Opération Alignement",
+  "revision_pour": [
+   "indentation"
+  ],
+  "briefing": "Un fichier a été transmis par un canal brouillé : les espaces en début de ligne ont été mélangés. Python refuse de l'exécuter.",
+  "objectif": "Comprendre que l'indentation définit les blocs en Python.",
+  "enonce": "Corrige l'indentation de classer_agent(points) : elle renvoie \"Élite\" si points >= 100, \"Confirmé\" si points >= 50, sinon \"Recrue\". Utilise 4 espaces par niveau.",
+  "donnees": "classer_agent(75)",
+  "resultat_attendu": "\"Confirmé\"",
+  "code_depart": "def classer_agent(points):\n  if points >= 100:\n        return \"Élite\"\n  elif points >= 50:\n  return \"Confirmé\"\n  else:\n      return \"Recrue\"\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "classer_agent",
+    "args": [
+     75
+    ],
+    "attendu": "Confirmé",
+    "description": "75 points",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "classer_agent",
+    "args": [
+     100
+    ],
+    "attendu": "Élite",
+    "description": "100 points",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "classer_agent",
+    "args": [
+     12
+    ],
+    "attendu": "Recrue",
+    "description": "12 points",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "classer_agent",
+    "args": [
+     50
+    ],
+    "attendu": "Confirmé",
+    "description": "50 points",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Quelles lignes appartiennent au bloc de la fonction ? Et au bloc de chaque if / elif / else ?",
+   "Niveau 1 (dans la fonction) : 4 espaces. Niveau 2 (dans un if) : 8 espaces. if, elif et else doivent être alignés entre eux.",
+   "Exemple :\ndef signe(n):\n    if n > 0:\n        return \"+\"\n    else:\n        return \"-\""
+  ],
+  "solution": "def classer_agent(points):\n    \"\"\"Renvoie le grade correspondant aux points.\"\"\"\n    if points >= 100:\n        return \"Élite\"\n    elif points >= 50:\n        return \"Confirmé\"\n    else:\n        return \"Recrue\"\n",
+  "explication": "En Python, l'indentation n'est pas décorative : c'est elle qui indique quelles lignes appartiennent à quel bloc. La convention PEP 8 est de 4 espaces par niveau. Dans l'éditeur, la touche Tab insère automatiquement 4 espaces.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "VAR-04",
+  "ordre": 15,
+  "theme": "variables",
+  "concepts": [
+   "types",
+   "chaines",
+   "fonctions"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Badge d'Identité",
+  "briefing": "Chaque agent reçoit un badge au format NOM-NUMÉRO, en majuscules, avec un numéro toujours écrit sur 3 chiffres : LYNX-007.",
+  "objectif": "Combiner conversion de types, méthodes de chaînes et f-string.",
+  "enonce": "Écris creer_badge(nom, numero) qui renvoie le nom en majuscules, un tiret, puis le numéro complété avec des zéros à gauche pour avoir 3 chiffres.",
+  "donnees": "creer_badge(\"lynx\", 7)",
+  "resultat_attendu": "\"LYNX-007\"",
+  "code_depart": "def creer_badge(nom, numero):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "creer_badge",
+    "args": [
+     "lynx",
+     7
+    ],
+    "attendu": "LYNX-007",
+    "description": "exemple",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "creer_badge",
+    "args": [
+     "Orion",
+     42
+    ],
+    "attendu": "ORION-042",
+    "description": "deux chiffres",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "creer_badge",
+    "args": [
+     "vega",
+     123
+    ],
+    "attendu": "VEGA-123",
+    "description": "trois chiffres",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "creer_badge",
+    "args": [
+     "Écho",
+     0
+    ],
+    "attendu": "ÉCHO-000",
+    "description": "numéro zéro",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Il y a deux transformations : une sur le nom, une sur le numéro. Lesquelles ?",
+   "texte.upper() met en majuscules. str(nombre).zfill(3) complète avec des zéros à gauche (\"7\" → \"007\"). Dans une f-string, {numero:03d} fait la même chose.",
+   "Exemple :\ncode = 5\nprint(\"ZONE\" + \"-\" + str(code).zfill(2))   # ZONE-05\nprint(f\"ZONE-{code:02d}\")             # ZONE-05"
+  ],
+  "solution": "def creer_badge(nom, numero):\n    \"\"\"Renvoie le badge au format NOM-NNN.\"\"\"\n    return f\"{nom.upper()}-{numero:03d}\"\n",
+  "explication": "La f-string permet de formater un nombre : {numero:03d} signifie « entier (d) sur 3 caractères, complété par des 0 ». La version str(numero).zfill(3) est équivalente et tout aussi correcte.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "CON-03",
+  "ordre": 16,
+  "theme": "conditions",
+  "concepts": [
+   "conditions",
+   "fonctions"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Météo de Mission",
+  "briefing": "Avant chaque saut en parachute, le centre calcule un niveau d'alerte selon le vent (km/h) et la visibilité (mètres).",
+  "objectif": "Combiner plusieurs conditions avec or dans une chaîne if / elif / else.",
+  "enonce": "Écris niveau_alerte(vent, visibilite) qui renvoie \"rouge\" si vent > 80 ou visibilite < 100 ; \"orange\" si vent > 50 ou visibilite < 500 ; sinon \"vert\".",
+  "donnees": "niveau_alerte(60, 1000)",
+  "resultat_attendu": "\"orange\"",
+  "code_depart": "def niveau_alerte(vent, visibilite):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "niveau_alerte",
+    "args": [
+     60,
+     1000
+    ],
+    "attendu": "orange",
+    "description": "vent moyen",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "niveau_alerte",
+    "args": [
+     20,
+     2000
+    ],
+    "attendu": "vert",
+    "description": "beau temps",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "niveau_alerte",
+    "args": [
+     90,
+     2000
+    ],
+    "attendu": "rouge",
+    "description": "tempête",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "niveau_alerte",
+    "args": [
+     10,
+     50
+    ],
+    "attendu": "rouge",
+    "description": "brouillard épais",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "niveau_alerte",
+    "args": [
+     80,
+     500
+    ],
+    "attendu": "orange",
+    "description": "limites exactes (80 et 500)",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "niveau_alerte",
+    "args": [
+     50,
+     499
+    ],
+    "attendu": "orange",
+    "description": "visibilité réduite",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "niveau_alerte",
+    "args": [
+     50,
+     500
+    ],
+    "attendu": "vert",
+    "description": "pile aux limites orange",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Quel niveau faut-il tester en premier : le plus grave ou le moins grave ? Pourquoi ?",
+   "or : il suffit qu'UNE des deux conditions soit vraie. Teste « rouge » d'abord, puis « orange ».",
+   "Exemple :\nif pluie > 50 or vent > 70:\n    return \"annulé\"\nelif pluie > 10:\n    return \"prudence\"\nreturn \"ok\"\nVérifie bien > ou >= selon l'énoncé."
+  ],
+  "solution": "def niveau_alerte(vent, visibilite):\n    \"\"\"Renvoie le niveau d'alerte : \"rouge\", \"orange\" ou \"vert\".\"\"\"\n    if vent > 80 or visibilite < 100:\n        return \"rouge\"\n    elif vent > 50 or visibilite < 500:\n        return \"orange\"\n    else:\n        return \"vert\"\n",
+  "explication": "On teste du plus grave au moins grave : une situation « rouge » vérifie aussi les conditions « orange », donc l'ordre compte. Les tests « limites exactes » vérifient la différence entre > et >=, source d'erreurs très fréquente.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "LIS-02",
+  "ordre": 17,
+  "theme": "listes",
+  "concepts": [
+   "listes",
+   "boucle-for",
+   "conditions"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Liste Noire",
+  "demo": true,
+  "elements": "noms",
+  "briefing": "Une liste de noms a été interceptée. Certains noms apparaissent plusieurs fois. L'agence a besoin d'une liste nettoyée contenant chaque nom une seule fois.",
+  "objectif": "Créer une fonction supprimer_doublons(noms) qui renvoie une liste sans doublons tout en conservant l'ordre initial.",
+  "enonce": "Écris supprimer_doublons(noms) qui renvoie une NOUVELLE liste sans doublons, dans l'ordre de première apparition. La liste d'origine ne doit pas être modifiée.",
+  "donnees": "noms = [\"Ivanov\", \"Smith\", \"Ivanov\", \"Dupont\", \"Smith\", \"Mori\"]",
+  "resultat_attendu": "[\"Ivanov\", \"Smith\", \"Dupont\", \"Mori\"]",
+  "code_depart": "def supprimer_doublons(noms):\n    \"\"\"Renvoie la liste des noms sans doublons, dans l'ordre d'origine.\"\"\"\n    # 1. Crée une liste vide pour le résultat\n    # 2. Parcours les noms\n    # 3. Ajoute un nom seulement s'il n'est pas déjà dans le résultat\n    # 4. Renvoie le résultat\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "supprimer_doublons",
+    "args": [
+     [
+      "Ivanov",
+      "Smith",
+      "Ivanov",
+      "Dupont",
+      "Smith",
+      "Mori"
+     ]
+    ],
+    "attendu": [
+     "Ivanov",
+     "Smith",
+     "Dupont",
+     "Mori"
+    ],
+    "description": "liste interceptée",
+    "visible": true,
+    "verifier_non_modifie": true
+   },
+   {
+    "type": "appel",
+    "fonction": "supprimer_doublons",
+    "args": [
+     []
+    ],
+    "attendu": [],
+    "description": "liste vide",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "supprimer_doublons",
+    "args": [
+     [
+      "Kane",
+      "Kane",
+      "Kane"
+     ]
+    ],
+    "attendu": [
+     "Kane"
+    ],
+    "description": "toujours le même nom",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "supprimer_doublons",
+    "args": [
+     [
+      "A",
+      "B",
+      "C"
+     ]
+    ],
+    "attendu": [
+     "A",
+     "B",
+     "C"
+    ],
+    "description": "aucun doublon",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "supprimer_doublons",
+    "args": [
+     [
+      "Lynx",
+      "lynx",
+      "Lynx"
+     ]
+    ],
+    "attendu": [
+     "Lynx",
+     "lynx"
+    ],
+    "description": "majuscules différentes",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "supprimer_doublons",
+    "args": [
+     [
+      "Z",
+      "A",
+      "Z",
+      "B",
+      "A"
+     ]
+    ],
+    "attendu": [
+     "Z",
+     "A",
+     "B"
+    ],
+    "description": "ordre d'origine conservé",
+    "visible": false,
+    "verifier_non_modifie": true
+   }
+  ],
+  "indices": [
+   "Comment savoir si un nom a DÉJÀ été ajouté au résultat ?",
+   "Le mot-clé in teste la présence : « if nom not in resultat: ». set() supprime aussi les doublons, mais il ne garde pas l'ordre : ici, ce n'est pas la bonne piste.",
+   "Exemple (garder les nombres pairs) :\nresultat = []\nfor n in nombres:\n    if n % 2 == 0:\n        resultat.append(n)\nreturn resultat\nIci, la condition porte sur la présence dans le résultat."
+  ],
+  "solution": "def supprimer_doublons(noms):\n    \"\"\"Renvoie la liste des noms sans doublons, dans l'ordre d'origine.\"\"\"\n    uniques = []\n    for nom in noms:\n        if nom not in uniques:\n            uniques.append(nom)\n    return uniques\n",
+  "explication": "On construit une nouvelle liste et on n'y ajoute un nom que s'il n'y est pas encore (not in). L'ordre est conservé car on parcourt la liste d'origine du début à la fin. list(set(noms)) semble plus court, mais un set ne garde pas l'ordre : les tests l'auraient détecté.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "origine": "banque"
+ },
+ {
+  "id": "BOU-05",
+  "ordre": 18,
+  "theme": "boucles",
+  "concepts": [
+   "boucle-while",
+   "variables"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Patrouille",
+  "briefing": "Le véhicule de patrouille consomme du carburant chaque jour. Combien de jours complets peut-il rouler avant de devoir rentrer ?",
+  "objectif": "Utiliser une boucle while dont la condition change à chaque tour.",
+  "enonce": "Écris jours_de_patrouille(carburant, consommation) qui renvoie le nombre de jours complets possibles : tant qu'il reste assez de carburant pour une journée, on roule. Utilise une boucle while.",
+  "donnees": "jours_de_patrouille(100, 30)",
+  "resultat_attendu": "3",
+  "code_depart": "def jours_de_patrouille(carburant, consommation):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "jours_de_patrouille",
+    "args": [
+     100,
+     30
+    ],
+    "attendu": 3,
+    "description": "exemple",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "jours_de_patrouille",
+    "args": [
+     90,
+     30
+    ],
+    "attendu": 3,
+    "description": "pile assez",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "jours_de_patrouille",
+    "args": [
+     10,
+     30
+    ],
+    "attendu": 0,
+    "description": "pas assez pour un jour",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "jours_de_patrouille",
+    "args": [
+     0,
+     5
+    ],
+    "attendu": 0,
+    "description": "réservoir vide",
+    "visible": false
+   },
+   {
+    "type": "structure",
+    "doit_utiliser": [
+     "while"
+    ],
+    "interdit": [],
+    "description": "utilise une boucle while",
+    "visible": true
+   }
+  ],
+  "indices": [
+   "Quelle condition doit être vraie pour rouler un jour de plus ?",
+   "while carburant >= consommation: … À l'intérieur, enlève la consommation et compte un jour. Si la condition ne change jamais, la boucle est infinie.",
+   "Exemple :\nsolde = 50\nachats = 0\nwhile solde >= 20:\n    solde -= 20\n    achats += 1"
+  ],
+  "solution": "def jours_de_patrouille(carburant, consommation):\n    \"\"\"Renvoie le nombre de jours complets possibles.\"\"\"\n    jours = 0\n    while carburant >= consommation:\n        carburant -= consommation\n        jours += 1\n    return jours\n",
+  "explication": "while répète tant que la condition est vraie. On ne connaît pas à l'avance le nombre de tours : c'est le cas typique du while. La ligne carburant -= consommation garantit que la boucle finira par s'arrêter.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "BOU-03",
+  "ordre": 19,
+  "theme": "boucles",
+  "concepts": [
+   "boucle-for",
+   "conditions",
+   "fonctions"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Coffre-Fort",
+  "briefing": "Le coffre ennemi se bloque après un certain nombre d'essais. Notre robot teste des codes dans l'ordre : réussira-t-il avant le blocage ?",
+  "objectif": "Parcourir une liste et s'arrêter dès qu'une condition est remplie.",
+  "enonce": "Écris ouvrir_coffre(essais, code_correct, max_essais) qui renvoie \"OUVERT\" si le code correct apparaît parmi les max_essais premiers essais, sinon \"BLOQUÉ\".",
+  "donnees": "ouvrir_coffre([1111, 2580, 7351], 2580, 2)",
+  "resultat_attendu": "\"OUVERT\"",
+  "code_depart": "def ouvrir_coffre(essais, code_correct, max_essais):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "ouvrir_coffre",
+    "args": [
+     [
+      1111,
+      2580,
+      7351
+     ],
+     2580,
+     2
+    ],
+    "attendu": "OUVERT",
+    "description": "trouvé au 2e essai",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "ouvrir_coffre",
+    "args": [
+     [
+      1111,
+      2580,
+      7351
+     ],
+     7351,
+     2
+    ],
+    "attendu": "BLOQUÉ",
+    "description": "trouvé trop tard",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "ouvrir_coffre",
+    "args": [
+     [
+      4242
+     ],
+     4242,
+     1
+    ],
+    "attendu": "OUVERT",
+    "description": "premier essai",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "ouvrir_coffre",
+    "args": [
+     [],
+     1234,
+     3
+    ],
+    "attendu": "BLOQUÉ",
+    "description": "aucun essai",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "ouvrir_coffre",
+    "args": [
+     [
+      1,
+      2
+     ],
+     9,
+     5
+    ],
+    "attendu": "BLOQUÉ",
+    "description": "max_essais plus grand que la liste",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Combien d'essais faut-il réellement regarder ? Attention si la liste est plus courte que max_essais.",
+   "essais[:max_essais] donne les max_essais premiers éléments (sans erreur si la liste est plus courte). Un return dans la boucle arrête tout dès que le code est trouvé.",
+   "Exemple :\nfor mot in mots[:3]:\n    if mot == \"stop\":\n        return \"trouvé\"\nreturn \"absent\""
+  ],
+  "solution": "def ouvrir_coffre(essais, code_correct, max_essais):\n    \"\"\"Renvoie \"OUVERT\" si le code est trouvé avant le blocage, sinon \"BLOQUÉ\".\"\"\"\n    for essai in essais[:max_essais]:\n        if essai == code_correct:\n            return \"OUVERT\"\n    return \"BLOQUÉ\"\n",
+  "explication": "Le découpage essais[:max_essais] limite la boucle sans risque d'IndexError. Le return \"OUVERT\" à l'intérieur de la boucle arrête la recherche ; le return \"BLOQUÉ\" n'est atteint que si la boucle s'est terminée sans succès.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "STR-03",
+  "ordre": 20,
+  "theme": "chaines",
+  "concepts": [
+   "chaines",
+   "conditions"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Palindrome",
+  "briefing": "Les mots de passe de l'ennemi sont toujours des palindromes : des phrases qui se lisent pareil dans les deux sens (« Kayak »). Écris un détecteur.",
+  "objectif": "Nettoyer une chaîne puis la comparer à son inverse.",
+  "enonce": "Écris est_palindrome(phrase) qui renvoie True si la phrase se lit de la même façon dans les deux sens, en ignorant les espaces et les majuscules.",
+  "donnees": "est_palindrome(\"Esope reste ici et se repose\")",
+  "resultat_attendu": "True",
+  "code_depart": "def est_palindrome(phrase):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "est_palindrome",
+    "args": [
+     "Kayak"
+    ],
+    "attendu": true,
+    "description": "Kayak",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "est_palindrome",
+    "args": [
+     "Esope reste ici et se repose"
+    ],
+    "attendu": true,
+    "description": "phrase avec espaces",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "est_palindrome",
+    "args": [
+     "agent"
+    ],
+    "attendu": false,
+    "description": "pas un palindrome",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "est_palindrome",
+    "args": [
+     ""
+    ],
+    "attendu": true,
+    "description": "phrase vide",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "est_palindrome",
+    "args": [
+     "Radar  "
+    ],
+    "attendu": true,
+    "description": "espaces à la fin",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Avant de comparer, quelles différences faut-il faire disparaître ?",
+   "lower() met tout en minuscules ; replace(\" \", \"\") supprime les espaces. Ensuite, compare le texte avec son inverse texte[::-1].",
+   "Exemple :\nmot = \"Elle\".lower()       # \"elle\"\nprint(mot == mot[::-1])   # True"
+  ],
+  "solution": "def est_palindrome(phrase):\n    \"\"\"Renvoie True si la phrase est un palindrome (espaces et majuscules ignorés).\"\"\"\n    nettoyee = phrase.lower().replace(\" \", \"\")\n    return nettoyee == nettoyee[::-1]\n",
+  "explication": "On découpe le problème en deux étapes : 1) normaliser (minuscules, sans espaces) ; 2) comparer avec l'inverse. Une comparaison avec == donne déjà True ou False : inutile d'écrire if … return True else return False.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "DIC-03",
+  "ordre": 21,
+  "theme": "dictionnaires",
+  "concepts": [
+   "dictionnaires",
+   "chaines",
+   "boucle-for"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Mots-Clés",
+  "briefing": "Les analystes cherchent les mots qui reviennent le plus dans les messages interceptés. Il faut compter chaque mot.",
+  "objectif": "Compter des occurrences avec un dictionnaire.",
+  "enonce": "Écris compter_mots(texte) qui renvoie un dictionnaire {mot: nombre d'apparitions}. Les mots sont séparés par des espaces et doivent être comptés en minuscules.",
+  "donnees": "compter_mots(\"Le colis le colis arrive\")",
+  "resultat_attendu": "{\"le\": 2, \"colis\": 2, \"arrive\": 1}",
+  "code_depart": "def compter_mots(texte):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "compter_mots",
+    "args": [
+     "Le colis le colis arrive"
+    ],
+    "attendu": {
+     "le": 2,
+     "colis": 2,
+     "arrive": 1
+    },
+    "description": "exemple",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "compter_mots",
+    "args": [
+     ""
+    ],
+    "attendu": {},
+    "description": "texte vide",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "compter_mots",
+    "args": [
+     "ALERTE alerte Alerte"
+    ],
+    "attendu": {
+     "alerte": 3
+    },
+    "description": "majuscules",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "compter_mots",
+    "args": [
+     "un  deux"
+    ],
+    "attendu": {
+     "un": 1,
+     "deux": 1
+    },
+    "description": "double espace",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Comment transformer le texte en liste de mots ? Que faire la première fois qu'on voit un mot ?",
+   "texte.lower().split() découpe en mots (en ignorant les espaces multiples). compteur[mot] = compteur.get(mot, 0) + 1 crée ou augmente le compte.",
+   "Exemple :\nfruits = [\"pomme\", \"kiwi\", \"pomme\"]\ncompte = {}\nfor f in fruits:\n    compte[f] = compte.get(f, 0) + 1"
+  ],
+  "solution": "def compter_mots(texte):\n    \"\"\"Renvoie le nombre d'apparitions de chaque mot (en minuscules).\"\"\"\n    compteur = {}\n    for mot in texte.lower().split():\n        compteur[mot] = compteur.get(mot, 0) + 1\n    return compteur\n",
+  "explication": "split() sans argument découpe sur n'importe quelle suite d'espaces : le test « double espace » le vérifie (split(\" \") aurait produit un mot vide). Le motif dico.get(cle, 0) + 1 est LA méthode classique pour compter.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "FON-02",
+  "ordre": 22,
+  "theme": "fonctions",
+  "concepts": [
+   "fonctions",
+   "variables"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Distance",
+  "briefing": "Deux agents donnent leurs coordonnées. À quelle distance sont-ils l'un de l'autre, à vol d'oiseau ?",
+  "objectif": "Écrire une fonction de calcul avec plusieurs paramètres.",
+  "enonce": "Écris distance(x1, y1, x2, y2) qui renvoie la distance entre les points (x1, y1) et (x2, y2), arrondie à 2 décimales. Formule : racine carrée de (x2 - x1)² + (y2 - y1)².",
+  "donnees": "distance(0, 0, 3, 4)",
+  "resultat_attendu": "5.0",
+  "code_depart": "def distance(x1, y1, x2, y2):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "distance",
+    "args": [
+     0,
+     0,
+     3,
+     4
+    ],
+    "attendu": 5.0,
+    "description": "triangle 3-4-5",
+    "visible": true,
+    "tolerance": 0.01
+   },
+   {
+    "type": "appel",
+    "fonction": "distance",
+    "args": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "attendu": 0.0,
+    "description": "même point",
+    "visible": false,
+    "tolerance": 0.01
+   },
+   {
+    "type": "appel",
+    "fonction": "distance",
+    "args": [
+     -2,
+     3,
+     4,
+     -5
+    ],
+    "attendu": 10.0,
+    "description": "coordonnées négatives",
+    "visible": false,
+    "tolerance": 0.01
+   },
+   {
+    "type": "appel",
+    "fonction": "distance",
+    "args": [
+     0,
+     0,
+     1,
+     1
+    ],
+    "attendu": 1.41,
+    "description": "diagonale",
+    "visible": false,
+    "tolerance": 0.01
+   }
+  ],
+  "indices": [
+   "Quelles sont les étapes du calcul ? Écris-les en commentaires avant de coder.",
+   "x ** 2 met au carré. La racine carrée s'obtient avec math.sqrt(x) (après import math) ou x ** 0.5.",
+   "Exemple :\nimport math\n\ndef hypotenuse(a, b):\n    return round(math.sqrt(a ** 2 + b ** 2), 2)"
+  ],
+  "solution": "import math\n\n\ndef distance(x1, y1, x2, y2):\n    \"\"\"Renvoie la distance entre deux points, arrondie à 2 décimales.\"\"\"\n    ecart_x = x2 - x1\n    ecart_y = y2 - y1\n    return round(math.sqrt(ecart_x ** 2 + ecart_y ** 2), 2)\n",
+  "explication": "Des variables intermédiaires (ecart_x, ecart_y) rendent la formule lisible. Les imports se placent tout en haut du fichier. math.sqrt et ** 0.5 donnent le même résultat.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "FON-03",
+  "ordre": 23,
+  "theme": "fonctions",
+  "concepts": [
+   "fonctions",
+   "chaines"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Matricule",
+  "briefing": "Chaque agent reçoit un matricule : un préfixe, un tiret, puis les 3 premières lettres de son nom en majuscules. Le préfixe est « AG » sauf indication contraire.",
+  "objectif": "Utiliser un paramètre avec une valeur par défaut.",
+  "enonce": "Écris generer_matricule(nom, prefixe=\"AG\") qui renvoie par exemple \"AG-LYN\" pour \"Lynx\". Si on donne un autre préfixe, il remplace « AG ».",
+  "donnees": "generer_matricule(\"Lynx\")  et  generer_matricule(\"orion\", \"SP\")",
+  "resultat_attendu": "\"AG-LYN\"  et  \"SP-ORI\"",
+  "code_depart": "def generer_matricule(nom, prefixe=...):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "generer_matricule",
+    "args": [
+     "Lynx"
+    ],
+    "attendu": "AG-LYN",
+    "description": "préfixe par défaut",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "generer_matricule",
+    "args": [
+     "orion",
+     "SP"
+    ],
+    "attendu": "SP-ORI",
+    "description": "préfixe donné",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "generer_matricule",
+    "args": [
+     "vega"
+    ],
+    "attendu": "AG-VEG",
+    "description": "minuscules",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "generer_matricule",
+    "args": [
+     "Nova"
+    ],
+    "attendu": "X-NOV",
+    "description": "préfixe nommé",
+    "visible": false,
+    "kwargs": {
+     "prefixe": "X"
+    }
+   }
+  ],
+  "indices": [
+   "Comment donner une valeur par défaut à un paramètre dans la ligne def ?",
+   "def f(a, b=10): signifie que b vaut 10 si on ne le précise pas. nom[:3] donne les 3 premières lettres.",
+   "Exemple :\ndef saluer(nom, formule=\"Bonjour\"):\n    return f\"{formule} {nom}\"\n\nsaluer(\"Iris\")          # \"Bonjour Iris\"\nsaluer(\"Iris\", \"Salut\") # \"Salut Iris\""
+  ],
+  "solution": "def generer_matricule(nom, prefixe=\"AG\"):\n    \"\"\"Renvoie le matricule : PREFIXE-ABC.\"\"\"\n    return f\"{prefixe}-{nom[:3].upper()}\"\n",
+  "explication": "Un paramètre par défaut rend un argument facultatif. On peut aussi le nommer à l'appel : generer_matricule(\"Nova\", prefixe=\"X\"), ce qui rend le code plus clair.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "EXC-01",
+  "ordre": 24,
+  "theme": "exceptions",
+  "concepts": [
+   "exceptions",
+   "types"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Conversion Sécurisée",
+  "revision_pour": [
+   "conversion_texte"
+  ],
+  "briefing": "Les codes tapés à la main sur le clavier de terrain contiennent parfois des fautes de frappe. Le programme ne doit jamais planter pour autant.",
+  "objectif": "Utiliser try / except ValueError.",
+  "enonce": "Écris convertir_code(texte) qui renvoie le nombre entier correspondant, ou None si le texte n'est pas un nombre entier valide. Utilise try / except.",
+  "donnees": "convertir_code(\"42\") et convertir_code(\"4A\")",
+  "resultat_attendu": "42 et None",
+  "code_depart": "def convertir_code(texte):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "convertir_code",
+    "args": [
+     "42"
+    ],
+    "attendu": 42,
+    "description": "code valide",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "convertir_code",
+    "args": [
+     "4A"
+    ],
+    "attendu": null,
+    "description": "faute de frappe",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "convertir_code",
+    "args": [
+     ""
+    ],
+    "attendu": null,
+    "description": "texte vide",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "convertir_code",
+    "args": [
+     "-17"
+    ],
+    "attendu": -17,
+    "description": "nombre négatif",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "convertir_code",
+    "args": [
+     "3.5"
+    ],
+    "attendu": null,
+    "description": "nombre à virgule",
+    "visible": false
+   },
+   {
+    "type": "structure",
+    "doit_utiliser": [
+     "try"
+    ],
+    "interdit": [],
+    "description": "utilise try / except",
+    "visible": true
+   }
+  ],
+  "indices": [
+   "Que se passe-t-il exactement quand on exécute int(\"4A\") ? Quel est le nom de l'erreur ?",
+   "try: contient l'instruction risquée. except ValueError: contient le plan B (ici : renvoyer None).",
+   "Exemple :\ntry:\n    prix = float(saisie)\nexcept ValueError:\n    prix = 0.0"
+  ],
+  "solution": "def convertir_code(texte):\n    \"\"\"Renvoie le code en entier, ou None s'il est invalide.\"\"\"\n    try:\n        return int(texte)\n    except ValueError:\n        return None\n",
+  "explication": "Une exception n'est pas forcément un bug : c'est un signal. try / except permet d'y répondre proprement. On précise ValueError pour ne pas masquer d'autres erreurs inattendues.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "EXC-02",
+  "ordre": 25,
+  "theme": "exceptions",
+  "concepts": [
+   "exceptions",
+   "fonctions"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Partage des Ressources",
+  "revision_pour": [
+   "division_zero"
+  ],
+  "briefing": "Les rations doivent être partagées équitablement entre les agents présents. Parfois, personne n'est présent… et le programme plante.",
+  "objectif": "Attraper une ZeroDivisionError.",
+  "enonce": "Écris partager(ressources, agents) qui renvoie ressources // agents. S'il n'y a aucun agent (division par zéro), renvoie 0. Utilise try / except ZeroDivisionError.",
+  "donnees": "partager(17, 5)",
+  "resultat_attendu": "3",
+  "code_depart": "def partager(ressources, agents):\n    return ressources // agents\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "partager",
+    "args": [
+     17,
+     5
+    ],
+    "attendu": 3,
+    "description": "exemple",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "partager",
+    "args": [
+     10,
+     0
+    ],
+    "attendu": 0,
+    "description": "aucun agent",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "partager",
+    "args": [
+     0,
+     3
+    ],
+    "attendu": 0,
+    "description": "aucune ressource",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "partager",
+    "args": [
+     100,
+     10
+    ],
+    "attendu": 10,
+    "description": "partage exact",
+    "visible": false
+   },
+   {
+    "type": "structure",
+    "doit_utiliser": [
+     "try"
+    ],
+    "interdit": [],
+    "description": "utilise try / except",
+    "visible": true
+   }
+  ],
+  "indices": [
+   "Exécute partager(10, 0) avec le code de départ : quelle erreur obtiens-tu ?",
+   "Place la division dans un bloc try, et le cas de secours dans except ZeroDivisionError.",
+   "Exemple :\ntry:\n    vitesse = distance / temps\nexcept ZeroDivisionError:\n    vitesse = 0"
+  ],
+  "solution": "def partager(ressources, agents):\n    \"\"\"Partage les ressources entre les agents (0 s'il n'y a personne).\"\"\"\n    try:\n        return ressources // agents\n    except ZeroDivisionError:\n        return 0\n",
+  "explication": "On aurait pu écrire « if agents == 0: return 0 ». Les deux approches sont correctes : tester avant (if) ou demander pardon après (try/except). Ici, l'objectif était de pratiquer try / except.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "CON-04",
+  "ordre": 26,
+  "theme": "conditions",
+  "concepts": [
+   "conditions",
+   "fonctions"
+  ],
+  "niveau": 4,
+  "difficulte": "intermediaire",
+  "titre": "Opération Calendrier",
+  "briefing": "Le chiffrement du jour dépend du calendrier : les années bissextiles utilisent une clé différente. Il faut les reconnaître sans erreur.",
+  "objectif": "Traduire une règle en conditions avec le modulo %.",
+  "enonce": "Écris est_bissextile(annee). Une année est bissextile si elle est divisible par 4, SAUF si elle est divisible par 100 ; mais elle l'est quand même si elle est divisible par 400.",
+  "donnees": "est_bissextile(2024)",
+  "resultat_attendu": "True",
+  "code_depart": "def est_bissextile(annee):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "est_bissextile",
+    "args": [
+     2024
+    ],
+    "attendu": true,
+    "description": "2024",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "est_bissextile",
+    "args": [
+     2023
+    ],
+    "attendu": false,
+    "description": "2023",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "est_bissextile",
+    "args": [
+     1900
+    ],
+    "attendu": false,
+    "description": "1900 (divisible par 100)",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "est_bissextile",
+    "args": [
+     2000
+    ],
+    "attendu": true,
+    "description": "2000 (divisible par 400)",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "est_bissextile",
+    "args": [
+     2100
+    ],
+    "attendu": false,
+    "description": "2100",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "est_bissextile",
+    "args": [
+     1996
+    ],
+    "attendu": true,
+    "description": "1996",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Comment savoir si un nombre est divisible par 4 ? Que vaut le reste de la division ?",
+   "annee % 4 == 0 signifie « divisible par 4 ». Commence par tester le cas le plus particulier (400).",
+   "Structure possible :\nif annee % 400 == 0:\n    return True\nif annee % 100 == 0:\n    return ...\nreturn annee % 4 == 0"
+  ],
+  "solution": "def est_bissextile(annee):\n    \"\"\"Renvoie True si l'année est bissextile.\"\"\"\n    if annee % 400 == 0:\n        return True\n    if annee % 100 == 0:\n        return False\n    return annee % 4 == 0\n",
+  "explication": "Quand une règle a des exceptions, on traite d'abord le cas le plus particulier (400), puis l'exception (100), puis la règle générale (4). Chaque return arrête la fonction : les tests suivants ne sont faits que si nécessaire.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "COR-03",
+  "ordre": 27,
+  "theme": "boucles",
+  "concepts": [
+   "boucle-while",
+   "listes"
+  ],
+  "niveau": 7,
+  "difficulte": "intermediaire",
+  "titre": "Opération Boucle Sans Fin",
+  "revision_pour": [
+   "boucle_infinie"
+  ],
+  "briefing": "Le générateur de numéros de badge tourne depuis trois jours sans s'arrêter. Le serveur chauffe. Trouve pourquoi.",
+  "objectif": "Repérer et corriger une boucle infinie.",
+  "enonce": "Corrige compter_jusqua(limite) : elle doit renvoyer la liste [1, 2, …, limite] (liste vide si limite vaut 0).",
+  "donnees": "compter_jusqua(4)",
+  "resultat_attendu": "[1, 2, 3, 4]",
+  "code_depart": "def compter_jusqua(limite):\n    \"\"\"Renvoie la liste [1, 2, ..., limite].\"\"\"\n    nombres = []\n    compteur = 1\n    while compteur <= limite:\n        nombres.append(compteur)\n    return nombres\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "compter_jusqua",
+    "args": [
+     4
+    ],
+    "attendu": [
+     1,
+     2,
+     3,
+     4
+    ],
+    "description": "jusqu'à 4",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "compter_jusqua",
+    "args": [
+     0
+    ],
+    "attendu": [],
+    "description": "limite 0",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "compter_jusqua",
+    "args": [
+     1
+    ],
+    "attendu": [
+     1
+    ],
+    "description": "limite 1",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "compter_jusqua",
+    "args": [
+     10
+    ],
+    "attendu": [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7,
+     8,
+     9,
+     10
+    ],
+    "description": "jusqu'à 10",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "À chaque tour, la condition compteur <= limite change-t-elle ?",
+   "Une boucle while s'arrête quand sa condition devient fausse. Il faut donc qu'une ligne DANS la boucle modifie compteur.",
+   "Exemple :\ni = 0\nwhile i < 3:\n    print(i)\n    i += 1   # sans cette ligne, i reste 0 pour toujours"
+  ],
+  "solution": "def compter_jusqua(limite):\n    \"\"\"Renvoie la liste [1, 2, ..., limite].\"\"\"\n    nombres = []\n    compteur = 1\n    while compteur <= limite:\n        nombres.append(compteur)\n        compteur += 1\n    return nombres\n",
+  "explication": "Le compteur n'augmentait jamais : la condition restait vraie pour toujours. L'application a arrêté le programme après quelques secondes grâce à sa limite de temps. Réflexe d'agent : pour chaque while, demande-toi « quelle ligne rapproche la fin ? ».",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "LIS-03",
+  "ordre": 28,
+  "theme": "listes",
+  "concepts": [
+   "listes",
+   "conditions",
+   "boucle-for"
+  ],
+  "niveau": 5,
+  "difficulte": "intermediaire",
+  "titre": "Opération Suspects Majeurs",
+  "elements": "suspects",
+  "briefing": "Le témoin décrit un suspect « entre 25 et 40 ans ». Filtre la base de données pour ne garder que les suspects correspondant à cette tranche d'âge.",
+  "objectif": "Parcourir une liste de listes et combiner deux conditions.",
+  "enonce": "Écris suspects_dans_tranche(suspects, age_min, age_max). Chaque suspect est une liste [nom, age]. Renvoie la liste des noms dont l'âge est compris entre age_min et age_max (bornes incluses), dans l'ordre d'origine.",
+  "donnees": "suspects = [[\"Ivan\", 34], [\"Lea\", 22], [\"Marc\", 40], [\"Ana\", 41], [\"Tom\", 25]]",
+  "resultat_attendu": "[\"Ivan\", \"Marc\", \"Tom\"]",
+  "code_depart": "def suspects_dans_tranche(suspects, age_min, age_max):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "suspects_dans_tranche",
+    "args": [
+     [
+      [
+       "Ivan",
+       34
+      ],
+      [
+       "Lea",
+       22
+      ],
+      [
+       "Marc",
+       40
+      ],
+      [
+       "Ana",
+       41
+      ],
+      [
+       "Tom",
+       25
+      ]
+     ],
+     25,
+     40
+    ],
+    "attendu": [
+     "Ivan",
+     "Marc",
+     "Tom"
+    ],
+    "description": "exemple",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "suspects_dans_tranche",
+    "args": [
+     [],
+     20,
+     30
+    ],
+    "attendu": [],
+    "description": "base vide",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "suspects_dans_tranche",
+    "args": [
+     [
+      [
+       "Zoe",
+       19
+      ],
+      [
+       "Max",
+       60
+      ]
+     ],
+     20,
+     30
+    ],
+    "attendu": [],
+    "description": "personne dans la tranche",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "suspects_dans_tranche",
+    "args": [
+     [
+      [
+       "Kim",
+       30
+      ],
+      [
+       "Raj",
+       30
+      ]
+     ],
+     30,
+     30
+    ],
+    "attendu": [
+     "Kim",
+     "Raj"
+    ],
+    "description": "tranche d'un an",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Pour chaque suspect, quelles sont les DEUX conditions à vérifier ?",
+   "suspect[0] est le nom, suspect[1] l'âge. « Bornes incluses » : utilise <= et >=. Python accepte aussi age_min <= age <= age_max.",
+   "Exemple :\nfor produit in stock:\n    prix = produit[1]\n    if 10 <= prix <= 20:\n        selection.append(produit[0])"
+  ],
+  "solution": "def suspects_dans_tranche(suspects, age_min, age_max):\n    \"\"\"Renvoie les noms des suspects dont l'âge est dans la tranche (bornes incluses).\"\"\"\n    selection = []\n    for nom, age in suspects:\n        if age_min <= age <= age_max:\n            selection.append(nom)\n    return selection\n",
+  "explication": "« for nom, age in suspects » déballe directement chaque petite liste en deux variables. La comparaison chaînée age_min <= age <= age_max équivaut à age >= age_min and age <= age_max.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "origine": "banque"
+ },
+ {
+  "id": "LIS-04",
+  "ordre": 29,
+  "theme": "listes",
+  "concepts": [
+   "listes",
+   "tuples",
+   "fonctions"
+  ],
+  "niveau": 5,
+  "difficulte": "intermediaire",
+  "titre": "Opération Coordonnées de la Cible",
+  "briefing": "Plusieurs drones ont repéré la cible à des positions légèrement différentes. Pour viser juste, on prend le centre : la moyenne des x et la moyenne des y.",
+  "objectif": "Parcourir une liste de tuples et calculer deux moyennes.",
+  "enonce": "Écris centre_cible(points) : points est une liste de tuples (x, y). Renvoie le tuple (moyenne des x, moyenne des y), chaque valeur arrondie à 2 décimales avec round(valeur, 2). La liste contient toujours au moins un point.",
+  "donnees": "points = [(2, 4), (4, 8), (6, 3)]",
+  "resultat_attendu": "(4.0, 5.0)",
+  "code_depart": "def centre_cible(points):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "centre_cible",
+    "args": [
+     [
+      {
+       "__tuple__": [
+        2,
+        4
+       ]
+      },
+      {
+       "__tuple__": [
+        4,
+        8
+       ]
+      },
+      {
+       "__tuple__": [
+        6,
+        3
+       ]
+      }
+     ]
+    ],
+    "attendu": {
+     "__tuple__": [
+      4.0,
+      5.0
+     ]
+    },
+    "description": "trois drones",
+    "visible": true,
+    "tolerance": 0.01
+   },
+   {
+    "type": "appel",
+    "fonction": "centre_cible",
+    "args": [
+     [
+      {
+       "__tuple__": [
+        1.5,
+        2.5
+       ]
+      }
+     ]
+    ],
+    "attendu": {
+     "__tuple__": [
+      1.5,
+      2.5
+     ]
+    },
+    "description": "un seul drone",
+    "visible": false,
+    "tolerance": 0.01
+   },
+   {
+    "type": "appel",
+    "fonction": "centre_cible",
+    "args": [
+     [
+      {
+       "__tuple__": [
+        0,
+        0
+       ]
+      },
+      {
+       "__tuple__": [
+        1,
+        0
+       ]
+      },
+      {
+       "__tuple__": [
+        0,
+        1
+       ]
+      }
+     ]
+    ],
+    "attendu": {
+     "__tuple__": [
+      0.33,
+      0.33
+     ]
+    },
+    "description": "arrondi",
+    "visible": false,
+    "tolerance": 0.01
+   },
+   {
+    "type": "appel",
+    "fonction": "centre_cible",
+    "args": [
+     [
+      {
+       "__tuple__": [
+        -3,
+        7
+       ]
+      },
+      {
+       "__tuple__": [
+        3,
+        -7
+       ]
+      }
+     ]
+    ],
+    "attendu": {
+     "__tuple__": [
+      0.0,
+      0.0
+     ]
+    },
+    "description": "valeurs négatives",
+    "visible": false,
+    "tolerance": 0.01
+   }
+  ],
+  "indices": [
+   "Une moyenne = somme ÷ nombre. Combien de sommes dois-tu calculer ?",
+   "Deux accumulateurs : somme_x et somme_y. Dans la boucle, « for x, y in points: » donne directement les deux coordonnées.",
+   "Exemple :\ntotal_a = 0\ntotal_b = 0\nfor a, b in paires:\n    total_a += a\n    total_b += b\nreturn (round(total_a / len(paires), 2), round(total_b / len(paires), 2))"
+  ],
+  "solution": "def centre_cible(points):\n    \"\"\"Renvoie (moyenne des x, moyenne des y), arrondies à 2 décimales.\"\"\"\n    somme_x = 0\n    somme_y = 0\n    for x, y in points:\n        somme_x += x\n        somme_y += y\n    nombre = len(points)\n    return (round(somme_x / nombre, 2), round(somme_y / nombre, 2))\n",
+  "explication": "Un tuple regroupe des valeurs qui vont ensemble (ici x et y). On peut le « déballer » dans la boucle : for x, y in points. Renvoyer un tuple permet de renvoyer les deux moyennes en une seule fois.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "DIC-04",
+  "ordre": 30,
+  "theme": "dictionnaires",
+  "concepts": [
+   "dictionnaires",
+   "listes",
+   "boucle-for"
+  ],
+  "niveau": 5,
+  "difficulte": "intermediaire",
+  "titre": "Opération Répartition",
+  "briefing": "Le QG veut savoir quels agents sont présents dans chaque ville pour organiser les rendez-vous.",
+  "objectif": "Construire un dictionnaire dont les valeurs sont des listes.",
+  "enonce": "Écris agents_par_ville(agents) : agents est une liste de dictionnaires {\"nom\": ..., \"ville\": ...}. Renvoie un dictionnaire {ville: [noms des agents]} en gardant l'ordre d'apparition.",
+  "donnees": "agents = [{\"nom\": \"Lynx\", \"ville\": \"Berne\"}, {\"nom\": \"Vega\", \"ville\": \"Genève\"}, {\"nom\": \"Orion\", \"ville\": \"Berne\"}]",
+  "resultat_attendu": "{\"Berne\": [\"Lynx\", \"Orion\"], \"Genève\": [\"Vega\"]}",
+  "code_depart": "def agents_par_ville(agents):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "agents_par_ville",
+    "args": [
+     [
+      {
+       "nom": "Lynx",
+       "ville": "Berne"
+      },
+      {
+       "nom": "Vega",
+       "ville": "Genève"
+      },
+      {
+       "nom": "Orion",
+       "ville": "Berne"
+      }
+     ]
+    ],
+    "attendu": {
+     "Berne": [
+      "Lynx",
+      "Orion"
+     ],
+     "Genève": [
+      "Vega"
+     ]
+    },
+    "description": "exemple",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "agents_par_ville",
+    "args": [
+     []
+    ],
+    "attendu": {},
+    "description": "aucun agent",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "agents_par_ville",
+    "args": [
+     [
+      {
+       "nom": "Iris",
+       "ville": "Oslo"
+      }
+     ]
+    ],
+    "attendu": {
+     "Oslo": [
+      "Iris"
+     ]
+    },
+    "description": "un agent",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Que faut-il faire la première fois qu'une ville apparaît ? Et les fois suivantes ?",
+   "agent[\"ville\"] et agent[\"nom\"] lisent les informations. Si la ville n'est pas encore une clé, crée-la avec une liste vide, puis ajoute le nom avec append().",
+   "Exemple :\ngroupes = {}\nfor eleve in eleves:\n    classe = eleve[\"classe\"]\n    if classe not in groupes:\n        groupes[classe] = []\n    groupes[classe].append(eleve[\"nom\"])"
+  ],
+  "solution": "def agents_par_ville(agents):\n    \"\"\"Regroupe les noms des agents par ville.\"\"\"\n    repartition = {}\n    for agent in agents:\n        ville = agent[\"ville\"]\n        if ville not in repartition:\n            repartition[ville] = []\n        repartition[ville].append(agent[\"nom\"])\n    return repartition\n",
+  "explication": "C'est le motif « regrouper » : une clé par catégorie, une liste de valeurs par clé. On crée la liste vide la première fois, puis on y ajoute les éléments. (Plus tard, tu découvriras dico.setdefault(ville, []) qui fait les deux en une ligne.)",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "STR-04",
+  "ordre": 31,
+  "theme": "chaines",
+  "concepts": [
+   "chaines",
+   "boucle-for",
+   "conditions"
+  ],
+  "niveau": 5,
+  "difficulte": "intermediaire",
+  "titre": "Opération César",
+  "briefing": "Jules César décalait chaque lettre de 3 rangs dans l'alphabet. L'agence utilise encore cette méthode pour les messages de faible importance.",
+  "objectif": "Parcourir une chaîne et transformer chaque lettre avec sa position dans l'alphabet.",
+  "enonce": "Écris chiffrer_cesar(message, decalage) : chaque lettre minuscule avance de « decalage » rangs (après z, on revient à a). Les autres caractères (espaces, ponctuation…) ne changent pas.",
+  "donnees": "chiffrer_cesar(\"attaque a l aube\", 3)",
+  "resultat_attendu": "\"dwwdtxh d o dxeh\"",
+  "code_depart": "ALPHABET = \"abcdefghijklmnopqrstuvwxyz\"\n\n\ndef chiffrer_cesar(message, decalage):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "chiffrer_cesar",
+    "args": [
+     "attaque a l aube",
+     3
+    ],
+    "attendu": "dwwdtxh d o dxeh",
+    "description": "exemple",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "chiffrer_cesar",
+    "args": [
+     "xyz",
+     3
+    ],
+    "attendu": "abc",
+    "description": "retour au début",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "chiffrer_cesar",
+    "args": [
+     "code: 42!",
+     1
+    ],
+    "attendu": "dpef: 42!",
+    "description": "ponctuation et chiffres",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "chiffrer_cesar",
+    "args": [
+     "",
+     5
+    ],
+    "attendu": "",
+    "description": "message vide",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "chiffrer_cesar",
+    "args": [
+     "abc",
+     26
+    ],
+    "attendu": "abc",
+    "description": "tour complet",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Pour une lettre donnée, comment trouver sa position, puis la lettre décalée ?",
+   "ALPHABET.index(lettre) donne la position (a → 0). (position + decalage) % 26 revient au début après z. Les caractères qui ne sont pas dans ALPHABET sont recopiés tels quels.",
+   "Exemple (lettre suivante) :\nposition = ALPHABET.index(\"c\")          # 2\nsuivante = ALPHABET[(position + 1) % 26]  # \"d\""
+  ],
+  "solution": "ALPHABET = \"abcdefghijklmnopqrstuvwxyz\"\n\n\ndef chiffrer_cesar(message, decalage):\n    \"\"\"Chiffre le message avec le code César.\"\"\"\n    resultat = \"\"\n    for caractere in message:\n        if caractere in ALPHABET:\n            position = (ALPHABET.index(caractere) + decalage) % len(ALPHABET)\n            resultat += ALPHABET[position]\n        else:\n            resultat += caractere\n    return resultat\n",
+  "explication": "Le modulo % fait « tourner » les positions : (25 + 3) % 26 = 2, donc z devient c. La constante ALPHABET, écrite en majuscules, indique une valeur qui ne change jamais : c'est une convention PEP 8.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "BOU-04",
+  "ordre": 32,
+  "theme": "boucles",
+  "concepts": [
+   "boucle-for",
+   "listes",
+   "variables"
+  ],
+  "niveau": 5,
+  "difficulte": "difficile",
+  "titre": "Opération Fibonacci",
+  "briefing": "La clé de chiffrement de cette semaine suit la suite de Fibonacci : chaque nombre est la somme des deux précédents (0, 1, 1, 2, 3, 5, 8…).",
+  "objectif": "Faire évoluer plusieurs variables à chaque tour de boucle.",
+  "enonce": "Écris cle_fibonacci(n) qui renvoie la liste des n premiers nombres de la suite, en commençant par 0 et 1. Pour n = 0, renvoie une liste vide.",
+  "donnees": "cle_fibonacci(7)",
+  "resultat_attendu": "[0, 1, 1, 2, 3, 5, 8]",
+  "code_depart": "def cle_fibonacci(n):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "cle_fibonacci",
+    "args": [
+     7
+    ],
+    "attendu": [
+     0,
+     1,
+     1,
+     2,
+     3,
+     5,
+     8
+    ],
+    "description": "7 nombres",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "cle_fibonacci",
+    "args": [
+     0
+    ],
+    "attendu": [],
+    "description": "n = 0",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "cle_fibonacci",
+    "args": [
+     1
+    ],
+    "attendu": [
+     0
+    ],
+    "description": "n = 1",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "cle_fibonacci",
+    "args": [
+     2
+    ],
+    "attendu": [
+     0,
+     1
+    ],
+    "description": "n = 2",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "cle_fibonacci",
+    "args": [
+     12
+    ],
+    "attendu": [
+     0,
+     1,
+     1,
+     2,
+     3,
+     5,
+     8,
+     13,
+     21,
+     34,
+     55,
+     89
+    ],
+    "description": "12 nombres",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "De quelles informations as-tu besoin pour calculer le nombre suivant ?",
+   "Garde deux variables a et b (les deux derniers nombres). À chaque tour : ajoute a au résultat, puis avance : a, b = b, a + b.",
+   "Squelette :\nresultat = []\na, b = 0, 1\nfor _ in range(n):\n    resultat.append(a)\n    a, b = b, a + b\nreturn resultat"
+  ],
+  "solution": "def cle_fibonacci(n):\n    \"\"\"Renvoie les n premiers nombres de la suite de Fibonacci.\"\"\"\n    suite = []\n    precedent, actuel = 0, 1\n    for _ in range(n):\n        suite.append(precedent)\n        precedent, actuel = actuel, precedent + actuel\n    return suite\n",
+  "explication": "L'affectation multiple a, b = b, a + b calcule d'abord toute la partie droite, puis range les résultats : elle évite une variable temporaire. Le nom _ indique qu'on n'utilise pas le compteur de la boucle.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "EXC-03",
+  "ordre": 33,
+  "theme": "exceptions",
+  "concepts": [
+   "exceptions",
+   "dictionnaires"
+  ],
+  "niveau": 5,
+  "difficulte": "difficile",
+  "titre": "Opération Fiche Incomplète",
+  "briefing": "Les fiches d'agents arrivent parfois incomplètes, voire totalement absentes (None). Le lecteur de fiches doit gérer tous ces cas.",
+  "objectif": "Gérer plusieurs types d'exceptions différents.",
+  "enonce": "Écris lire_fiche(fiche, champ) qui renvoie fiche[champ]. Si le champ n'existe pas (KeyError), renvoie \"CHAMP MANQUANT\". Si la fiche vaut None (TypeError), renvoie \"FICHE INVALIDE\".",
+  "donnees": "fiche = {\"nom\": \"Lynx\", \"grade\": \"Analyste\"}",
+  "resultat_attendu": "lire_fiche(fiche, \"grade\") → \"Analyste\"",
+  "code_depart": "def lire_fiche(fiche, champ):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "lire_fiche",
+    "args": [
+     {
+      "nom": "Lynx",
+      "grade": "Analyste"
+     },
+     "grade"
+    ],
+    "attendu": "Analyste",
+    "description": "champ présent",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "lire_fiche",
+    "args": [
+     {
+      "nom": "Lynx"
+     },
+     "base"
+    ],
+    "attendu": "CHAMP MANQUANT",
+    "description": "champ absent",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "lire_fiche",
+    "args": [
+     null,
+     "nom"
+    ],
+    "attendu": "FICHE INVALIDE",
+    "description": "fiche absente",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "lire_fiche",
+    "args": [
+     {},
+     "nom"
+    ],
+    "attendu": "CHAMP MANQUANT",
+    "description": "fiche vide",
+    "visible": false
+   },
+   {
+    "type": "structure",
+    "doit_utiliser": [
+     "try"
+    ],
+    "interdit": [],
+    "description": "utilise try / except",
+    "visible": true
+   }
+  ],
+  "indices": [
+   "Quelles erreurs Python lève-t-il pour dico[\"x\"] avec x absent ? Et pour None[\"x\"] ?",
+   "Un try peut avoir plusieurs except, un par type d'erreur : except KeyError: … except TypeError: …",
+   "Exemple :\ntry:\n    valeur = donnees[cle]\nexcept KeyError:\n    valeur = \"absent\"\nexcept TypeError:\n    valeur = \"illisible\""
+  ],
+  "solution": "def lire_fiche(fiche, champ):\n    \"\"\"Lit un champ d'une fiche en gérant les fiches incomplètes ou absentes.\"\"\"\n    try:\n        return fiche[champ]\n    except KeyError:\n        return \"CHAMP MANQUANT\"\n    except TypeError:\n        return \"FICHE INVALIDE\"\n",
+  "explication": "Chaque except traite un problème précis avec une réponse adaptée. C'est bien plus sûr qu'un « except: » général, qui cacherait aussi les vraies erreurs de programmation.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "COR-01",
+  "ordre": 34,
+  "theme": "listes",
+  "concepts": [
+   "listes",
+   "boucle-for",
+   "exceptions"
+  ],
+  "niveau": 7,
+  "difficulte": "intermediaire",
+  "titre": "Opération Programme Saboté",
+  "briefing": "Un agent double a modifié le calcul de moyenne du centre d'entraînement. Les notes des recrues sont fausses… et le programme plante parfois. Trouve et corrige TOUS les sabotages.",
+  "objectif": "Lire un programme existant, repérer les erreurs de logique et les corriger.",
+  "enonce": "Corrige moyenne_notes(notes) : elle doit renvoyer la moyenne de la liste, ou 0 si la liste est vide. Il y a trois sabotages.",
+  "donnees": "moyenne_notes([12, 8, 16])",
+  "resultat_attendu": "12.0",
+  "code_depart": "def moyenne_notes(notes):\n    \"\"\"Renvoie la moyenne des notes, ou 0 si la liste est vide.\"\"\"\n    total = 0\n    for i in range(1, len(notes)):\n        total = notes[i]\n    return total / len(notes)\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "moyenne_notes",
+    "args": [
+     [
+      12,
+      8,
+      16
+     ]
+    ],
+    "attendu": 12.0,
+    "description": "trois notes",
+    "visible": true,
+    "tolerance": 0.001
+   },
+   {
+    "type": "appel",
+    "fonction": "moyenne_notes",
+    "args": [
+     [
+      10
+     ]
+    ],
+    "attendu": 10.0,
+    "description": "une note",
+    "visible": false,
+    "tolerance": 0.001
+   },
+   {
+    "type": "appel",
+    "fonction": "moyenne_notes",
+    "args": [
+     []
+    ],
+    "attendu": 0,
+    "description": "aucune note",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "moyenne_notes",
+    "args": [
+     [
+      5,
+      6,
+      7,
+      8
+     ]
+    ],
+    "attendu": 6.5,
+    "description": "quatre notes",
+    "visible": false,
+    "tolerance": 0.001
+   }
+  ],
+  "indices": [
+   "Déroule la boucle à la main avec [12, 8, 16] : quelles valeurs prend i ? Que vaut total à chaque tour ?",
+   "range(1, len(notes)) commence à 1 (la première note est oubliée). total = … remplace au lieu d'ajouter. Et si notes est vide ?",
+   "Rappel :\nfor note in notes:      # parcourt TOUTES les notes\n    total += note       # += ajoute\nif not notes:          # cas de la liste vide\n    return 0"
+  ],
+  "solution": "def moyenne_notes(notes):\n    \"\"\"Renvoie la moyenne des notes, ou 0 si la liste est vide.\"\"\"\n    if not notes:\n        return 0\n    total = 0\n    for note in notes:\n        total += note\n    return total / len(notes)\n",
+  "explication": "Les trois sabotages : 1) range(1, …) ignorait la première note ; 2) total = remplaçait la valeur au lieu de l'ajouter ; 3) la liste vide provoquait une division par zéro. Lire du code existant en le « déroulant » à la main est une compétence essentielle.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "LIS-05",
+  "ordre": 35,
+  "theme": "listes",
+  "concepts": [
+   "listes",
+   "fonctions"
+  ],
+  "niveau": 6,
+  "difficulte": "difficile",
+  "titre": "Opération Top Menaces",
+  "elements": "scores",
+  "briefing": "Le rapport du matin ne doit contenir que les n menaces les plus élevées, de la plus forte à la plus faible. Attention : la liste originale sert à d'autres services, elle ne doit surtout pas être modifiée.",
+  "objectif": "Trier sans modifier l'original et découper une liste.",
+  "enonce": "Écris top_menaces(scores, n) qui renvoie une nouvelle liste contenant les n plus grands scores, triés du plus grand au plus petit. Si n dépasse la taille de la liste, renvoie tous les scores triés. La liste scores ne doit pas être modifiée.",
+  "donnees": "top_menaces([40, 95, 12, 77, 60], 3)",
+  "resultat_attendu": "[95, 77, 60]",
+  "code_depart": "def top_menaces(scores, n):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "top_menaces",
+    "args": [
+     [
+      40,
+      95,
+      12,
+      77,
+      60
+     ],
+     3
+    ],
+    "attendu": [
+     95,
+     77,
+     60
+    ],
+    "description": "top 3",
+    "visible": true,
+    "verifier_non_modifie": true
+   },
+   {
+    "type": "appel",
+    "fonction": "top_menaces",
+    "args": [
+     [
+      5,
+      1,
+      9
+     ],
+     10
+    ],
+    "attendu": [
+     9,
+     5,
+     1
+    ],
+    "description": "n plus grand que la liste",
+    "visible": false,
+    "verifier_non_modifie": true
+   },
+   {
+    "type": "appel",
+    "fonction": "top_menaces",
+    "args": [
+     [
+      8,
+      3
+     ],
+     0
+    ],
+    "attendu": [],
+    "description": "n = 0",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "top_menaces",
+    "args": [
+     [],
+     2
+    ],
+    "attendu": [],
+    "description": "aucune menace",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "top_menaces",
+    "args": [
+     [
+      50,
+      50,
+      20
+     ],
+     2
+    ],
+    "attendu": [
+     50,
+     50
+    ],
+    "description": "égalités",
+    "visible": false,
+    "verifier_non_modifie": true
+   }
+  ],
+  "indices": [
+   "Quelle est la différence entre liste.sort() et sorted(liste) ?",
+   "sorted(scores, reverse=True) renvoie une NOUVELLE liste triée du plus grand au plus petit. Le découpage liste[:n] garde les n premiers éléments (sans erreur si n est trop grand).",
+   "Exemple :\nnotes = [12, 18, 9]\nmeilleures = sorted(notes, reverse=True)[:2]   # [18, 12]\n# notes vaut toujours [12, 18, 9]"
+  ],
+  "solution": "def top_menaces(scores, n):\n    \"\"\"Renvoie les n plus grands scores, du plus grand au plus petit.\"\"\"\n    tries = sorted(scores, reverse=True)\n    return tries[:n]\n",
+  "explication": "scores.sort() trie la liste ORIGINALE (et renvoie None) ; sorted(scores) crée une copie triée. Le découpage [:n] est tolérant : si n dépasse la longueur, il renvoie toute la liste, sans IndexError.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "origine": "banque"
+ },
+ {
+  "id": "FON-04",
+  "ordre": 36,
+  "theme": "fonctions",
+  "concepts": [
+   "fonctions",
+   "dictionnaires",
+   "boucle-for",
+   "chaines"
+  ],
+  "niveau": 6,
+  "difficulte": "difficile",
+  "titre": "Opération Rapport de Mission",
+  "briefing": "Le directeur veut, chaque soir, un résumé en une ligne des missions de la journée.",
+  "objectif": "Combiner boucle, dictionnaires, calcul et f-string dans une fonction réaliste.",
+  "enonce": "Écris rapport(missions) : missions est une liste de dictionnaires {\"nom\": ..., \"statut\": \"réussie\" ou \"échouée\"}. Renvoie le texte \"<r> réussie(s), <e> échouée(s), taux de réussite : <t>%\" où t est le pourcentage de réussite arrondi à l'entier (round). S'il n'y a aucune mission, renvoie \"Aucune mission\".",
+  "donnees": "[{\"nom\": \"Onyx\", \"statut\": \"réussie\"}, {\"nom\": \"Brume\", \"statut\": \"échouée\"}, {\"nom\": \"Zénith\", \"statut\": \"réussie\"}]",
+  "resultat_attendu": "\"2 réussie(s), 1 échouée(s), taux de réussite : 67%\"",
+  "code_depart": "def rapport(missions):\n    pass\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "rapport",
+    "args": [
+     [
+      {
+       "nom": "Onyx",
+       "statut": "réussie"
+      },
+      {
+       "nom": "Brume",
+       "statut": "échouée"
+      },
+      {
+       "nom": "Zénith",
+       "statut": "réussie"
+      }
+     ]
+    ],
+    "attendu": "2 réussie(s), 1 échouée(s), taux de réussite : 67%",
+    "description": "exemple",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "rapport",
+    "args": [
+     []
+    ],
+    "attendu": "Aucune mission",
+    "description": "journée calme",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "rapport",
+    "args": [
+     [
+      {
+       "nom": "A",
+       "statut": "échouée"
+      }
+     ]
+    ],
+    "attendu": "0 réussie(s), 1 échouée(s), taux de réussite : 0%",
+    "description": "tout échoue",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "rapport",
+    "args": [
+     [
+      {
+       "nom": "A",
+       "statut": "réussie"
+      },
+      {
+       "nom": "A",
+       "statut": "réussie"
+      },
+      {
+       "nom": "A",
+       "statut": "réussie"
+      },
+      {
+       "nom": "A",
+       "statut": "réussie"
+      }
+     ]
+    ],
+    "attendu": "4 réussie(s), 0 échouée(s), taux de réussite : 100%",
+    "description": "sans faute",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Découpe le problème : 1) cas vide ; 2) compter ; 3) calculer le taux ; 4) construire le texte.",
+   "Deux compteurs dans une boucle (if mission[\"statut\"] == \"réussie\"). Taux = réussies / total × 100, puis round(). Une f-string assemble le texte final.",
+   "Exemple :\nvrais = 0\nfor reponse in reponses:\n    if reponse[\"ok\"]:\n        vrais += 1\npourcentage = round(vrais / len(reponses) * 100)\nreturn f\"{vrais} bonnes réponses ({pourcentage}%)\""
+  ],
+  "solution": "def rapport(missions):\n    \"\"\"Résume une liste de missions en une ligne.\"\"\"\n    if not missions:\n        return \"Aucune mission\"\n    reussies = 0\n    for mission in missions:\n        if mission[\"statut\"] == \"réussie\":\n            reussies += 1\n    echouees = len(missions) - reussies\n    taux = round(reussies / len(missions) * 100)\n    return f\"{reussies} réussie(s), {echouees} échouée(s), taux de réussite : {taux}%\"\n",
+  "explication": "Un problème « réel » se résout en petites étapes, dans l'ordre : cas particulier d'abord, puis comptage, calcul et mise en forme. Calculer les échecs par soustraction évite un deuxième compteur.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ },
+ {
+  "id": "COR-02",
+  "ordre": 37,
+  "theme": "fonctions",
+  "concepts": [
+   "fonctions",
+   "dictionnaires",
+   "print-return"
+  ],
+  "niveau": 7,
+  "difficulte": "difficile",
+  "titre": "Opération Filtre Défectueux",
+  "briefing": "Le filtre des agents actifs a été écrit en urgence pendant une alerte. Il ne fonctionne pas du tout. Remets-le en état de marche.",
+  "objectif": "Corriger des erreurs de syntaxe ET de logique dans un même programme.",
+  "enonce": "Corrige agents_actifs(agents) : agents est une liste de dictionnaires {\"nom\": ..., \"statut\": ...}. La fonction renvoie la liste des noms des agents dont le statut est \"actif\".",
+  "donnees": "[{\"nom\": \"Lynx\", \"statut\": \"actif\"}, {\"nom\": \"Cobra\", \"statut\": \"retraité\"}]",
+  "resultat_attendu": "[\"Lynx\"]",
+  "code_depart": "def agents_actifs(agents)\n    actifs = []\n    for agent in agents:\n        if agent[\"statut\"] = \"actif\":\n            actifs.append(agent[\"nom\"])\n        print(actifs)\n",
+  "tests": [
+   {
+    "type": "appel",
+    "fonction": "agents_actifs",
+    "args": [
+     [
+      {
+       "nom": "Lynx",
+       "statut": "actif"
+      },
+      {
+       "nom": "Cobra",
+       "statut": "retraité"
+      }
+     ]
+    ],
+    "attendu": [
+     "Lynx"
+    ],
+    "description": "exemple",
+    "visible": true
+   },
+   {
+    "type": "appel",
+    "fonction": "agents_actifs",
+    "args": [
+     []
+    ],
+    "attendu": [],
+    "description": "aucun agent",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "agents_actifs",
+    "args": [
+     [
+      {
+       "nom": "A",
+       "statut": "actif"
+      },
+      {
+       "nom": "B",
+       "statut": "actif"
+      }
+     ]
+    ],
+    "attendu": [
+     "A",
+     "B"
+    ],
+    "description": "tous actifs",
+    "visible": false
+   },
+   {
+    "type": "appel",
+    "fonction": "agents_actifs",
+    "args": [
+     [
+      {
+       "nom": "C",
+       "statut": "en mission"
+      }
+     ]
+    ],
+    "attendu": [],
+    "description": "aucun actif",
+    "visible": false
+   }
+  ],
+  "indices": [
+   "Exécute le code : Python t'indique une première erreur. Corrige-la, puis recommence. Combien en trouves-tu ?",
+   "Il manque « : » après le def. Dans un if, on compare avec ==. Une fonction doit renvoyer son résultat avec return… et pas à chaque tour de boucle.",
+   "Rappel de structure :\ndef filtre(elements):\n    resultat = []\n    for e in elements:\n        if e[\"cle\"] == \"valeur\":\n            resultat.append(e[\"nom\"])\n    return resultat   # aligné avec le for, pas dedans"
+  ],
+  "solution": "def agents_actifs(agents):\n    \"\"\"Renvoie les noms des agents actifs.\"\"\"\n    actifs = []\n    for agent in agents:\n        if agent[\"statut\"] == \"actif\":\n            actifs.append(agent[\"nom\"])\n    return actifs\n",
+  "explication": "Quatre problèmes : les deux-points manquants après def, = au lieu de == dans le if, print au lieu de return, et l'indentation du print qui le plaçait dans la boucle. Python ne signale que la PREMIÈRE erreur de syntaxe à la fois : corrige, relance, recommence.",
+  "bareme": {
+   "points": 100,
+   "penalite_indice": 10,
+   "penalite_tentative": 5,
+   "penalite_solution": 50,
+   "bonus_qualite": 10
+  },
+  "elements": "éléments",
+  "origine": "banque"
+ }
+]

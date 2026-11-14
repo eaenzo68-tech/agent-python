@@ -1,0 +1,1 @@
+Copie locale de Pyodide : lance  python outils/telecharger_pyodide.py
