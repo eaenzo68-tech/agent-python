@@ -13,7 +13,13 @@ export function el(balise, attributs = {}, ...enfants) {
     else if (cle === "text") noeud.textContent = valeur;
     else if (cle === "html") noeud.innerHTML = valeur; // uniquement pour du HTML écrit par nous
     else if (cle === "on") for (const [evt, fn] of Object.entries(valeur)) noeud.addEventListener(evt, fn);
-    else if (cle === "style" && typeof valeur === "object") Object.assign(noeud.style, valeur);
+    else if (cle === "style" && typeof valeur === "object") {
+      for (const [propriete, v] of Object.entries(valeur)) {
+        // Les variables CSS (--nom) exigent setProperty : une simple affectation est ignorée.
+        if (propriete.startsWith("--")) noeud.style.setProperty(propriete, v);
+        else noeud.style[propriete] = v;
+      }
+    }
     else if (valeur === true) noeud.setAttribute(cle, "");
     else noeud.setAttribute(cle, valeur);
   }
