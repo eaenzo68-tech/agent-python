@@ -116,7 +116,7 @@ class PageMission {
     this.editeur = creerEditeur({
       valeur: code,
       taille: etat.reglages.tailleEditeur,
-      coloration: etat.reglages.coloration,
+      coloration: etat.reglages.colorationEditeur,
       barreSymboles: etat.reglages.barreSymboles,
       surChange: (texte) => this._sauverBrouillon(texte),
       surExecuter: () => this.executer(),

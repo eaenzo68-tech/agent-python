@@ -19,11 +19,18 @@ const GUILLEMETS_COURBES = /[\u201c\u201d\u2018\u2019]/g;
 const CONTIENT_GUILLEMETS_COURBES = /[\u201c\u201d\u2018\u2019]/;
 const REMPLACEMENTS = { "“": '"', "”": '"', "‘": "'", "’": "'" };
 
+// Sur iPhone / iPad, Safari décale légèrement le texte d'une zone de saisie par rapport
+// au calque coloré : le curseur ne tombe plus au bon endroit. On y affiche donc
+// directement le texte tapé (sans coloration), ce qui garantit un curseur aligné.
+const APPAREIL_IOS = /iP(hone|ad|od)/.test(navigator.userAgent)
+  || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
 export function creerEditeur({
   valeur = "", taille = 15, coloration = true, barreSymboles = "auto",
   surChange = () => {}, surExecuter = () => {}, surEnvoyer = () => {},
 } = {}) {
   const hauteurLigne = Math.round(taille * 1.6);
+  if (APPAREIL_IOS) coloration = false;
 
   const saisie = el("textarea", {
     class: "editeur-saisie", spellcheck: "false", autocapitalize: "off", autocomplete: "off",

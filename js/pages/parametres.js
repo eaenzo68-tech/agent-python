@@ -26,7 +26,9 @@ export function afficher(vue, { etat, rafraichir }) {
   const valeurTaille = el("span", { class: "mono", text: `${reglages.tailleEditeur} px` });
   const editeur = carte("Éditeur de code",
     el("label", { class: "etiquette", text: "Taille du texte" }), el("div", { class: "ligne-champs" }, champTaille, valeurTaille),
-    interrupteur("Coloration syntaxique", reglages.coloration, (v) => { reglages.coloration = v; sauver(); }),
+    interrupteur("Coloration syntaxique dans l'éditeur", reglages.colorationEditeur,
+      (v) => { reglages.colorationEditeur = v; sauver(); },
+      "Expérimental : sur certains appareils, le curseur peut être décalé. Toujours désactivée sur iPhone et iPad."),
     el("label", { class: "etiquette", text: "Barre de symboles (utile sur iPad sans clavier)" }),
     el("select", { class: "champ", on: { change: (evt) => { reglages.barreSymboles = evt.target.value; sauver(); } } },
       [["auto", "Automatique (écrans tactiles)"], ["toujours", "Toujours afficher"], ["jamais", "Jamais"]]

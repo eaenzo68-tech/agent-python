@@ -36,7 +36,7 @@ export function etatInitial() {
     reglages: {
       delai: 3,
       tailleEditeur: 15,
-      coloration: true,
+      colorationEditeur: false, // la superposition colorée peut décaler le curseur
       modeLibre: false,
       animations: true,
       barreSymboles: "auto",

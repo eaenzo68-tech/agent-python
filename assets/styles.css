@@ -422,7 +422,11 @@ textarea.champ { resize: vertical; line-height: 1.5; }
 .editeur-calque code { background: none; color: inherit; padding: 0; font: inherit; border-radius: 0; }
 .editeur-saisie { position: relative; z-index: 1; background: transparent; color: transparent; -webkit-text-fill-color: transparent; caret-color: var(--cyan); resize: none; outline: none; overflow: hidden; }
 .editeur-saisie::selection { background: rgba(34, 211, 238, 0.28); -webkit-text-fill-color: transparent; }
-.editeur.sans-coloration .editeur-calque { color: var(--texte); }
+/* Sans coloration (et toujours sur iPhone / iPad) : on affiche le vrai texte tapé,
+   le curseur est alors forcément aligné. */
+.editeur.sans-coloration .editeur-calque { visibility: hidden; }
+.editeur.sans-coloration .editeur-saisie { color: var(--texte); -webkit-text-fill-color: var(--texte); }
+.editeur.sans-coloration .editeur-saisie::selection { -webkit-text-fill-color: var(--texte); }
 .editeur-marque { position: absolute; left: 0; right: 0; height: var(--hauteur-ligne); background: rgba(244, 63, 94, 0.14); box-shadow: inset 3px 0 0 var(--rouge); pointer-events: none; min-width: 100%; }
 
 /* Console ------------------------------------------------------------- */
